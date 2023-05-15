@@ -15,7 +15,6 @@ public class pokemon {
         this.defense = defense;
         this.exp = 0;
         this.status = true;
-        this.skills[0];
     }
 
 }
