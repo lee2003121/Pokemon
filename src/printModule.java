@@ -1,7 +1,7 @@
 public class printModule {
-    final private static int width = 122;
-    final private static int height = 30;
-    private char[][] screen = new char[height][width];
+    final private static int width = 122; // 콘솔 최대 너비
+    final private static int height = 30; // 콘솔 최대 높이
+    private char[][] screen = new char[height][width]; // 콘솔에 출력할 화면을 저장
 
     private static class LazyHolder{
         public static final printModule instance = new printModule();
@@ -46,7 +46,16 @@ public class printModule {
         }
     }
 
+    public void printScreen(int millisecond){
+        this.printScreen();
+        try{
+            Thread.sleep(millisecond);
+        } catch(InterruptedException e){
+
+        }
+    }
+
     public static void clear() {
-        for(int i = 0; i < 80; i++) System.out.println();
+        for(int i = 0; i < height; i++) System.out.println(); // 콘솔 최대 높이만큼 줄바꿈해서 지워진것 처럼 보임
     }
 }
