@@ -17,7 +17,7 @@ public class printModule {
         return LazyHolder.instance;
     }
 
-    public int setPoint(int x, int y, char c) { // (x, y)좌표의 문자를 c로 지정하는 함수
+    public int setPoint(int x, int y, char c) { // (x, y)좌표의 문자를 c로 지정하는 함수 (실패시 -1)
         try {
             return this.screen[x][y] = c;
         }
@@ -27,12 +27,29 @@ public class printModule {
         }
     }
 
-    public void setMessage(String msg){ // 화면에 출력할 메시지를 세팅하는 함수
+    public int setScreen(String[] source) // String[]을 받아서 screen에 저장하는 함수 (실패시 -1)
+    {
+        int size = source.length;
+        for (int i = 0; i < size; i++) {
+            int length = source[i].length();
+            if(length > width) return -1;
+            for(int j = 0; j < length; j++)
+            {
+                this.screen[i][j] = source[i].charAt(j);
+            }
+        }
+        return 0;
+    }
+
+    public int setMessage(String msg){ // 화면에 출력할 메시지를 세팅하는 함수 (실패시 -1)
         int msgLength = msg.length();
+
+        if(msgLength > width) return -1;
 
         for(int i = 0; i < msgLength; i++){
             this.screen[height - 1][i] = msg.charAt(i);
         }
+        return 0;
     }
 
     public void printScreen() { // 콘솔에 화면을 출력하는 함수
