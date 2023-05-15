@@ -3,8 +3,21 @@ public class printModule {
     final private static int height = 30;
     private char[][] screen = new char[height][width];
 
-    public void setPoint(int x, int y, char c) {
-        this.screen[x][y] = c;
+    printModule() {
+        for(int i = 0; i < height; i++){
+            for(int j = 0; j < width; j++){
+                screen[i][j] = ' ';
+            }
+        }
+    }
+    public int setPoint(int x, int y, char c) {
+        try {
+            return this.screen[x][y] = c;
+        }
+        catch(ArrayIndexOutOfBoundsException e)
+        {
+            return -1;
+        }
     }
 
     public void setMessage(String msg){
