@@ -41,6 +41,10 @@ public class printModule {
         return 0;
     }
 
+    public int setScreen(Map m){
+
+    }
+
     public int setMessage(String msg){ // 화면에 출력할 메시지를 세팅하는 함수 (실패시 -1)
         int msgLength = msg.length();
 
