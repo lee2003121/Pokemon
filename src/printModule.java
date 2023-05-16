@@ -42,7 +42,7 @@ public class printModule {
     }
 
     public int setScreen(Map m){
-
+        return this.setScreen(m.getMapData());
     }
 
     public int setMessage(String msg){ // 화면에 출력할 메시지를 세팅하는 함수 (실패시 -1)
