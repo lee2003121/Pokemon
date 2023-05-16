@@ -1,9 +1,9 @@
 import java.io.*;
 
 public class Map {
-    int width;
-    int height;
-    String[] mapData;
+    private int width;
+    private int height;
+    private String[] mapData;
 
     void setMapData(File mapFile) // 파일경로를 받아서 mapData에 저장하는 함수
     {
@@ -30,5 +30,9 @@ public class Map {
         mapData = new String[height];
 
         return 0;
+    }
+
+    public String[] getMapData(){
+        return mapData;
     }
 }
