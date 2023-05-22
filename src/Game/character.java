@@ -1,3 +1,5 @@
+package Game;
+
 public class character {
     private item bag;
     private Map now_map;

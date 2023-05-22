@@ -1,3 +1,8 @@
+package Framework;
+
+import Game.Map;
+import Game.character;
+
 public class printModule {
     final private static int width = 122; // 콘솔 최대 너비
     final private static int height = 30; // 콘솔 최대 높이
@@ -57,7 +62,7 @@ public class printModule {
     }
 
     public void printScreen() { // 콘솔에 화면을 출력하는 함수
-        printModule.clear();
+        getInstance().clear();
         int x, y;
         for(x = 0; x < height; x++) {
             for(y = 0; y < width; y++){
@@ -98,7 +103,7 @@ public class printModule {
         }
     }
 
-    public static void clear() { // 화면을 지우는 함수
+    public void clear() { // 화면을 지우는 함수
         for(int i = 0; i < height; i++) System.out.println(); // 콘솔 최대 높이만큼 줄바꿈해서 지워진것 처럼 보임
     }
 }

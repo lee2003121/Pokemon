@@ -5,6 +5,7 @@ public class Scene {
     public void Start()
     {
         System.out.println("Start");
+
     }
     public void Update()
     {

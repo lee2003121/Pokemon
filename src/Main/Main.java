@@ -1,10 +1,11 @@
 package Main;
 
-import Mng.GameMng;
+import Framework.printModule;
 
 public class Main {
     public static void main(String[] args) {
 
-        GameMng.getInstance().GameLoop();
+        //GameMng.getInstance().GameLoop();
+
     }
 }
