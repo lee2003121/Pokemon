@@ -1,6 +1,7 @@
 import java.io.*;
 
 public class Map {
+    public static final char[] impassableObject = {'='}; // 통
     private int width;
     private int height;
     private String[] mapData;
@@ -10,8 +11,8 @@ public class Map {
         try{
             BufferedReader BR = new BufferedReader(new FileReader(mapFile));
             String mapSize = BR.readLine();
-            width  = Integer.parseInt(mapSize.split(" ")[0]);
-            height = Integer.parseInt(mapSize.split(" ")[1]);
+            height = Integer.parseInt(mapSize.split(" ")[0]);
+            width = Integer.parseInt(mapSize.split(" ")[1]);
             setHeight(height);
 
             for(int i = 0; i < height; i++){
@@ -39,5 +40,12 @@ public class Map {
         if(x < 0 || x > height) return 0;
         if(y < 0 || y > width) return 0;
         return mapData[x].charAt(y);
+    }
+
+    public static boolean isPassable(char tile){
+        for(char c: impassableObject){
+            if(c == tile) return false;
+        }
+        return true;
     }
 }
