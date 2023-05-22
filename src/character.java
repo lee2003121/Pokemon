@@ -1,8 +1,8 @@
 public class character {
     private item bag;
     private Map now_map;
-    private int[] position = new int[2]; // 현재 좌표
-
+    private int pX;
+    private int pY;
     private static class lazyHolder{
         public static character instance = new character();
     }
@@ -15,10 +15,15 @@ public class character {
     }
 
     public int getX(){
-        return position[0];
+        return pX;
     }
 
     public int getY(){
-        return position[1];
+        return pY;
+    }
+
+    public void goRight(){
+        char nextTile = now_map.getMapData(this.pX, this.pY + 1);
+        if(nextTile == )
     }
 }
