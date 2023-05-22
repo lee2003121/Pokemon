@@ -11,7 +11,7 @@ public class character {
     }
 
     public void init(){
-
+        bag = new item();
     }
 
     public int getX(){
