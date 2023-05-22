@@ -24,6 +24,18 @@ public class character {
 
     public void goRight(){
         char nextTile = now_map.getMapData(this.pX, this.pY + 1);
-        if(nextTile == )
+        if(Map.isPassable(nextTile)) pY = pY + 1;
+    }
+    public void goLeft(){
+        char nextTile = now_map.getMapData(this.pX, this.pY - 1);
+        if(Map.isPassable(nextTile)) pY = pY - 1;
+    }
+    public void goUp(){
+        char nextTile = now_map.getMapData(this.pX + 1, this.pY);
+        if(Map.isPassable(nextTile)) pX = pX + 1;
+    }
+    public void goDown(){
+        char nextTile = now_map.getMapData(this.pX - 1, this.pY);
+        if(Map.isPassable(nextTile)) pX = pX - 1;
     }
 }
