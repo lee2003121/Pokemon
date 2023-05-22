@@ -35,4 +35,9 @@ public class Map {
     public String[] getMapData(){
         return mapData;
     }
+    public char getMapData(int x, int y){
+        if(x < 0 || x > height) return 0;
+        if(y < 0 || y > width) return 0;
+        return mapData[x].charAt(y);
+    }
 }
