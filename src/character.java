@@ -13,4 +13,12 @@ public class character {
     public void init(){
 
     }
+
+    public int getX(){
+        return position[0];
+    }
+
+    public int getY(){
+        return position[1];
+    }
 }
