@@ -76,6 +76,28 @@ public class printModule {
         }
     }
 
+    public void printScreen(character player) {
+        int x, y;
+        int pX = player.getX();
+        int pY = player.getY();
+        for(x = 0; x < height; x++) {
+            for(y = 0; y < width; y++){
+                if(x == pX && y == pY) System.out.println('A');
+                else System.out.print(this.screen[x][y]);
+            }
+            System.out.println();
+        }
+    }
+
+    public void printScreen(character player, int millisecond){
+        this.printScreen(player);
+        try{
+            Thread.sleep(millisecond);
+        } catch(InterruptedException e){
+            // sleep실패하면 뭐 아쉽게 된거지
+        }
+    }
+
     public static void clear() { // 화면을 지우는 함수
         for(int i = 0; i < height; i++) System.out.println(); // 콘솔 최대 높이만큼 줄바꿈해서 지워진것 처럼 보임
     }
