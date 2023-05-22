@@ -40,8 +40,8 @@ public class GameMng{
     {
         while (isPlaying)
         {
-            Update();
             Draw();
+            Update();
         }
     }
 

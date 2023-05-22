@@ -4,10 +4,9 @@ import java.util.Scanner;
 
 public class Scene {
 
-    private String inputData;
+    protected String inputData;
     public void Start()
     {
-        System.out.println("Start");
 
     }
     public void Update()
