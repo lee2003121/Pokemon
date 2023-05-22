@@ -1,7 +1,7 @@
 import java.io.*;
 
 public class Map {
-    public static final char[] impassableObject = {'='}; // 통
+    private static final char[] impassableObject = {0, '='}; // 통
     private int width;
     private int height;
     private String[] mapData;
