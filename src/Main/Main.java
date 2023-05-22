@@ -7,5 +7,11 @@ public class Main {
 
         //GameMng.getInstance().GameLoop();
 
+        while (true)
+        {
+            System.out.println("Hello");
+            printModule.getInstance().clear();
+        }
+
     }
 }
