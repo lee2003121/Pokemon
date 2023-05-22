@@ -3,11 +3,11 @@ public class character {
     private Map now_map;
     private int[] position = new int[2]; // 현재 좌표
 
-    private static class lazyHoler{
+    private static class lazyHolder{
         public static character instance = new character();
     }
     public static character getInstance(){
-        return lazyHoler.instance;
+        return lazyHolder.instance;
     }
 
     public void init(){
