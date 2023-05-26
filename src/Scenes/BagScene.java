@@ -1,6 +1,7 @@
 package Scenes;
 
 import Framework.Scene;
+import Game.Bag;
 import Game.character;
 public class BagScene extends Scene {
     @Override
@@ -16,9 +17,7 @@ public class BagScene extends Scene {
     @Override
     public void Draw() {
         super.Draw();
-        character player = character.getInstance();
-        player.bag.Show_Recovery_Pills();
-        player.bag.Show_MonsterBall();
-        player.bag.Show_Candy();
+        Bag bag = Bag.getInstance();
+        bag.printBag();
     }
 }

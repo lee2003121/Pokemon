@@ -1,13 +1,13 @@
 package Game;
 
-import Item.Item;
+import Game.Bag;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class character {
-    private List<Item> bag;
     private Map now_map;
+    private Bag bag;
     private int pX;
     private int pY;
     private static class lazyHolder{
@@ -18,7 +18,7 @@ public class character {
     }
 
     public void init(){
-        bag = new item();
+        bag = Bag.getInstance();
     }
 
     public int getX(){
@@ -45,4 +45,5 @@ public class character {
         char nextTile = now_map.getMapData(this.pX - 1, this.pY);
         if(Map.isPassable(nextTile)) pX = pX - 1;
     }
+
 }
