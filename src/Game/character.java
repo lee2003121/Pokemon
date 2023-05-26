@@ -1,7 +1,12 @@
 package Game;
 
+import Item.Item;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class character {
-    public item bag;
+    private List<Item> bag;
     private Map now_map;
     private int pX;
     private int pY;
