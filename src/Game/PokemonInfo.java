@@ -11,4 +11,20 @@ class PokemonInfo{
     int level;
     int exp;
     int status;
+
+    @Override
+    public String toString() {
+        return "PokemonInfo{" +
+                "name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", skill1='" + skill1 + '\'' +
+                ", skill2='" + skill2 + '\'' +
+                ", hp=" + hp +
+                ", atk=" + atk +
+                ", def=" + def +
+                ", level=" + level +
+                ", exp=" + exp +
+                ", status=" + status +
+                '}';
+    }
 }
