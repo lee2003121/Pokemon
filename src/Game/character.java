@@ -10,7 +10,7 @@ public class character {
     private Bag bag;
     private int pX;
     private int pY;
-    private static class lazyHolder{
+    private static class lazyHolder{ // Singleton class
         public static character instance = new character();
     }
     public static character getInstance(){
@@ -19,8 +19,11 @@ public class character {
 
     public void init(){
         bag = Bag.getInstance();
-    }
+    } // 초기설정으로 가방클래스 세팅
 
+    /*
+    좌표 반환
+     */
     public int getX(){
         return pX;
     }
@@ -28,7 +31,9 @@ public class character {
     public int getY(){
         return pY;
     }
-
+    /*
+    이동하기
+     */
     public void goRight(){
         char nextTile = now_map.getMapData(this.pX, this.pY + 1);
         if(Map.isPassable(nextTile)) pY = pY + 1;
