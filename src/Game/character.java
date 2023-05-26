@@ -1,7 +1,7 @@
 package Game;
 
 public class character {
-    private item bag;
+    public item bag;
     private Map now_map;
     private int pX;
     private int pY;
