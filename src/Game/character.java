@@ -1,7 +1,12 @@
 package Game;
 
+import Item.Item;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class character {
-    private item bag;
+    private List<Item> bag;
     private Map now_map;
     private int pX;
     private int pY;
@@ -13,7 +18,7 @@ public class character {
     }
 
     public void init(){
-        bag = new item();
+        bag = new ArrayList<>();
     }
 
     public int getX(){
@@ -41,3 +46,7 @@ public class character {
         if(Map.isPassable(nextTile)) pX = pX - 1;
     }
 }
+/*;
+HealingItem potion = new HealingItem("Potion", "Heals a Pokémon by 20 HP.", 300, 20);
+character.addItemToBag(potion);
+ */

@@ -1,3 +1,7 @@
+package Item;
+
+import Item.Item;
+
 public class PokeBall extends Item {
     private double catchRate;
 

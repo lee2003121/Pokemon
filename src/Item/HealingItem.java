@@ -1,3 +1,5 @@
+package Item;
+
 public class HealingItem extends Item {
     private int healingPoints;
 

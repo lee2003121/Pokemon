@@ -1,4 +1,6 @@
-public abstract class Item {
+package Item;
+
+public class Item {
     private String name;
     private String description;
     private int price;

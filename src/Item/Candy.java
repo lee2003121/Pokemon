@@ -1,3 +1,5 @@
+package Item;
+
 public class Candy extends Item {
     private int experiencePoints;
 
