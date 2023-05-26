@@ -3,8 +3,6 @@ package Mng;
 import Framework.Scene;
 import Scenes.MenuScene;
 
-import java.awt.*;
-
 public class GameMng{
     private GameMng() {
         curScene = new MenuScene();

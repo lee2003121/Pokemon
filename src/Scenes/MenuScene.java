@@ -1,7 +1,6 @@
 package Scenes;
 
 import Framework.Scene;
-import Mng.GameMng;
 
 public class MenuScene extends Scene {
 
