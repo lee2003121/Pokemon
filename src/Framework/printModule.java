@@ -81,7 +81,7 @@ public class printModule {
         }
     }
 
-    public void printScreen(character player) {
+    public void printScreen(character player) { //캐릭터 위치를 'A'로 출력 나머지는 화면 그대로
         int x, y;
         int pX = player.getX();
         int pY = player.getY();
