@@ -50,5 +50,13 @@ public class character {
         char nextTile = now_map.getMapData(this.pX - 1, this.pY);
         if(Map.isPassable(nextTile)) pX = pX - 1;
     }
+    public void collectCoin(int amount) {
+        bag.addCoin(amount);
+        System.out.println(amount + "코인을 획득하였습니다.");
+    }
 
+    public void enterShop(Shop shop) {
+        shop.buyPotion();
+        shop.buySuperBall();
+    }
 }

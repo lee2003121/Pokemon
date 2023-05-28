@@ -1,52 +1,93 @@
 package Game;
 
-import Item.*;
+import Item.Item;
 
+import java.io.*;
 import java.util.ArrayList;
 
 public class Bag {
-    public final int MaxItemCount = 30; // 아이템 최대 개수
-    private ArrayList<Item> ItemList; // 아이템으 담을 ArrayList
+    public final int MaxItemCount = 30;
+    private ArrayList<Item> itemList;
+    private int coin;
+    private static final String FILE_NAME = "bag_data.java_a++";
 
-    private Bag(){
-        ItemList = new ArrayList<Item>();
+    private Bag() {
+        itemList = new ArrayList<>();
+        coin = 0;
     }
 
-    private static class lazyHolder{ // Singleton class
-        public static Bag instance = new Bag();
+    private static class LazyHolder {
+        public static final Bag instance = new Bag();
     }
 
-    public static Bag getInstance(){
-        return lazyHolder.instance;
+    public static Bag getInstance() {
+        return LazyHolder.instance;
     }
 
-    public int addItem(Item i){ // 아이템 가방에 넣기
-        if(ItemList.size() >= MaxItemCount) return -1;
-        else{
-            ItemList.add(i);
+    public int addItem(Item item) {
+        if (itemList.size() >= MaxItemCount)
+            return -1;
+        else {
+            itemList.add(item);
             return 0;
         }
     }
 
-    public int getNowItemCount(){return ItemList.size();} // 현재 아이템 개수 
+    public int getNowItemCount() {
+        return itemList.size();
+    }
 
-    public void printBag(){ // 가방에 있는 아이템 출력하기
-        if(ItemList.size() == 0){
+    public void printBag() {
+        if (itemList.size() == 0) {
             System.out.println("가방이 비어있습니다.");
-        }
-        else{
-            for(int i = 0; i < ItemList.size(); i++) {
-                System.out.println((i + 1) + ". " + ItemList.get(i).getName() + " " + ItemList.get(i).getDescription());
+        } else {
+            for (int i = 0; i < itemList.size(); i++) {
+                System.out.println((i + 1) + ". " + itemList.get(i).getName() + " " + itemList.get(i).getDescription());
             }
         }
     }
 
-    public int useItem(int index){ // 아이템 사용하기
-        if(0 < index && index < ItemList.size()){
-            // 아이템 사용
-            ItemList.remove(index);
+    public int useItem(int index) {
+        if (index > 0 && index <= itemList.size()) {
+            itemList.remove(index - 1);
             return 0;
         }
         return -1;
+    }
+
+    public int getCoin() {
+        return coin;
+    }
+
+    public void setCoin(int coin) {
+        this.coin = coin;
+    }
+
+    public void addCoin(int amount) {
+        coin += amount;
+    }
+
+    public void deductCoin(int amount) {
+        coin -= amount;
+    }
+
+    public void saveData() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
+            oos.writeObject(itemList);
+            oos.writeInt(coin);
+            System.out.println("데이터 저장 완료");
+        } catch (IOException e) {
+            System.out.println("데이터 저장 실패: " + e.getMessage());
+        }
+    }
+
+    public void loadData() {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
+            itemList = (ArrayList<Item>) ois.readObject();
+            coin = ois.readInt();
+            System.out.println("데이터 로드 완료");
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("데이터 로드 실패: " + e.getMessage());
+        }
     }
 }

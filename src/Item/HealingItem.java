@@ -1,18 +1,18 @@
 package Item;
 
 public class HealingItem extends Item {
-    private int healingPoints;
+    private int healingPower;
 
-    public HealingItem(String name, String description, int price, int healingPoints) {
+    public HealingItem(String name, String description, int price, int healingPower) {
         super(name, description, price);
-        this.healingPoints = healingPoints;
+        this.healingPower = healingPower;
     }
 
-    public int getHealingPoints() {
-        return healingPoints;
+    public int getHealingPower() {
+        return healingPower;
     }
 
-    public void setHealingPoints(int healingPoints) {
-        this.healingPoints = healingPoints;
+    public void setHealingPower(int healingPower) {
+        this.healingPower = healingPower;
     }
 }
