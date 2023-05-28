@@ -9,7 +9,7 @@ public class Bag {
     public final int MaxItemCount = 30;
     private ArrayList<Item> itemList;
     private int coin;
-    private static final String FILE_NAME = "bag_data.java_a++";
+    private static final String FILE_NAME = "bag_data.km";
 
     private Bag() {
         itemList = new ArrayList<>();
