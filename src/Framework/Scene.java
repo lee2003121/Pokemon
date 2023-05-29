@@ -11,7 +11,6 @@ public class Scene {
     }
     public void Update()
     {
-        System.out.println("Update");
         sc = new Scanner(System.in);
         inputData = sc.next();
         sc.close();

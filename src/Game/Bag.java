@@ -68,6 +68,7 @@ public class Bag {
     }
 
     public void deductCoin(int amount) {
+
         coin -= amount;
     }
 

@@ -5,26 +5,28 @@ import Game.MyPokemon;
 import Game.Pokemon;
 import Game.PokemonInfo;
 
+import java.util.List;
+
 public class FightScene extends Scene {
 
-    PokemonInfo[] myPokemons;
-    PokemonInfo[] allPokemons;
+    List<PokemonInfo> myPokemons;
+    List<PokemonInfo> allPokemons;
 
     @Override
     public void Start() {
         super.Start();
 
-        myPokemons = MyPokemon.MyPokemon();
-        allPokemons = Pokemon.generatePokemon();
+        myPokemons = MyPokemon.getInfo();
+        allPokemons = Pokemon.getInfo();
 
-        for(int i=0;i< myPokemons.length;i++)
+        for(int i=0;i< myPokemons.size();i++)
         {
-            System.out.println(myPokemons[i]);
+            System.out.println(myPokemons.get(i));
         }
         System.out.println("전체 포켓몬");
-        for(int i=0;i< allPokemons.length;i++)
+        for(int i=0;i< allPokemons.size();i++)
         {
-            System.out.println(allPokemons[i]);
+            System.out.println(allPokemons.get(i));
         }
 
     }
