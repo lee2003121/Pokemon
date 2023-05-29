@@ -1,6 +1,6 @@
 package Game;
 
-class PokemonInfo{
+public class PokemonInfo{
     String name;
     // 포켓몬 이름
     String type;
@@ -9,6 +9,9 @@ class PokemonInfo{
     // 포켓몬 기술1
     String skill2;
     // 포켓몬 기술2
+
+    int maxHp;
+
     int hp;
     // 포켓몬 hp
     int atk;
@@ -37,5 +40,10 @@ class PokemonInfo{
                 ", exp=" + exp +
                 ", status=" + status +
                 '}';
+    }
+
+    public void Init()
+    {
+        hp = maxHp;
     }
 }

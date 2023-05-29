@@ -3,7 +3,7 @@ package Framework;
 import java.util.Scanner;
 
 public class Scene {
-
+    Scanner sc;
     protected String inputData;
     public void Start()
     {
@@ -11,8 +11,8 @@ public class Scene {
     }
     public void Update()
     {
-        //System.out.println("Update");
-        Scanner sc = new Scanner(System.in);
+        System.out.println("Update");
+        sc = new Scanner(System.in);
         inputData = sc.next();
         sc.close();
     }
@@ -24,7 +24,7 @@ public class Scene {
 
     public void Exit()
     {
-        System.out.println("Exit");
+        sc.close();
     }
 
     public String GetInputData()

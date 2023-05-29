@@ -6,7 +6,7 @@ import java.io.IOException;
 public class Pokemon {
     // 포켓몬의 정보를 받는 getInfo() 메서드, 매개변수로 포켓몬 객체와, csv 파일에서 해당 포켓몬을 찾을 수 있는 targetLine을 받음
     public static void getInfo(PokemonInfo Pokemon, int targetLine){
-        String csvFile = "https://github.com/lee2003121/Pokemon/blob/main/etc/pokemonInformation.csv";
+        String csvFile = "etc/pokemonInformation.csv";
         // 포켓몬 csv 파일 경로
         String line;
         // targetLine을 찾아 들어가기 위한 변수

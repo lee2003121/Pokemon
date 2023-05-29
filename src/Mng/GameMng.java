@@ -5,16 +5,17 @@ import Scenes.MenuScene;
 
 public class GameMng{
     private GameMng() {
+        //메뉴에서 시작
         curScene = new MenuScene();
         curScene.Start();
     }
     private static GameMng instance;
-
     public boolean isPlaying = true;
 
     private Scene curScene;
     private Scene prevScene;
 
+    //싱글톤 패턴
     public  static GameMng getInstance()
     {
         if(instance == null)

@@ -1,6 +1,7 @@
 package Scenes;
 
 import Framework.Scene;
+import Mng.GameMng;
 
 public class MenuScene extends Scene {
 
@@ -11,13 +12,13 @@ public class MenuScene extends Scene {
         switch (Integer.parseInt(inputData))
         {
             case 1:
-                //전투 씬으로 이동
+                GameMng.getInstance().ChangeState(new FightScene());
                 break;
             case 2:
-                //수집 씬으로 이동
+                GameMng.getInstance().ChangeState(new CollectionScene());
                 break;
             case 3:
-                //가방 씬으로 이동
+                GameMng.getInstance().ChangeState(new BagScene());
                 break;
             case 4:
                 System.exit(0);
