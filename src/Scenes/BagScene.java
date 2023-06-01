@@ -5,7 +5,7 @@ import Game.Bag;
 import Game.character;
 public class BagScene extends Scene {
     @Override
-    public  void Update()
+    public void Update()
     {
         super.Update();
         if(Integer.parseInt(inputData) == 0){//뒤로가기
