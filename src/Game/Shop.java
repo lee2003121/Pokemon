@@ -58,7 +58,7 @@ public class Shop {
 
     public void buyPotion() {
         if (bag.getCoin() >= POTION_PRICE) {
-            HealingItem potion = new HealingItem("포션", "포켓몬의 체력을 20 회복시킵니다.", POTION_PRICE, 20);
+            HealingItem potion = new HealingItem("일반 회복약", "포켓몬의 체력을 20 회복시킵니다.", POTION_PRICE, 20);
             if (bag.addItem(potion) == 0) {
                 bag.deductCoin(POTION_PRICE);
                 System.out.println("포션을 구매하였습니다.");
