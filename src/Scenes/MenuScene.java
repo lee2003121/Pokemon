@@ -9,7 +9,7 @@ public class MenuScene extends Scene {
     public  void Update()
     {
         super.Update();
-        switch (Integer.parseInt(inputData))
+        switch (GameMng.getInstance().scanner.nextInt())
         {
             case 1:
                 GameMng.getInstance().ChangeState(new FightScene());
