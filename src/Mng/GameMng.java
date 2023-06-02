@@ -42,7 +42,6 @@ public class GameMng{
             instance = new GameMng();
         return instance;
     }
-
     private void Update()
     {
         if(curScene != null)
