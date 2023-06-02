@@ -19,7 +19,7 @@ public class BagScene extends Scene {
             return;
         }
         else {
-            // 아이템 사용처리
+
         }
     }
 
