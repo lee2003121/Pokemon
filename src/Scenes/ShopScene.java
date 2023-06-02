@@ -1,6 +1,7 @@
 package Scenes;
 
 import Framework.Scene;
+import Mng.GameMng;
 import Game.Shop;
 import Game.Bag;
 
@@ -10,7 +11,8 @@ public class ShopScene extends Scene {
     public void Update(){
         Shop shop = new Shop(Bag.getInstance());
         super.Update();
-        switch(Integer.parseInt(inputData)){
+        int inputData = GameMng.getInstance().scanner.nextInt();
+        switch(inputData){
             case 0: /*뒤로가기*/ break;
             case 1: shop.buyPotion(); break;
             case 2: shop.buyAdvancedPotion(); break;
