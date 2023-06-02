@@ -1,28 +1,30 @@
 package Game;
 
+import Mng.GameMng;
+
 public class PokemonInfo{
-    String name;
+    public String name;
     // 포켓몬 이름
-    String type;
+    public String type;
     // 포켓몬 타입
-    String skill1;
+    public String skill1;
     // 포켓몬 기술1
-    String skill2;
+    public String skill2;
     // 포켓몬 기술2
 
-    int maxHp;
+    public int maxHp;
 
-    int hp;
+    public int hp;
     // 포켓몬 hp
-    int atk;
+    public int atk;
     // 포켓몬 공격력
-    int def;
+    public int def;
     // 포켓몬 방어력
-    int level;
+    public int level;
     // 포켓몬 레벨
-    int exp;
+    public int exp;
     // 포켓몬 경험치
-    int status;
+    public int status;
     // 포켓몬 상태 1이면 전투 가능, 0이면 기절 상태
 
     // 포켓몬 객체 출력을 위한 toString() 메서드 선언
@@ -42,8 +44,62 @@ public class PokemonInfo{
                 '}';
     }
 
+    public String GetSmallInfo_Hp()
+    {
+        return String.format("%s / %s 속성 / Hp: %d / Atk: %d / Level: %d",name,type,hp,atk,level);
+    }
+
+    public String GetSmallInfo_MaxHp()
+    {
+        return String.format("%s / %s 속성 / Hp: %d / Atk: %d / Level: %d",name,type,hp,atk,level);
+    }
+
     public void Init()
     {
         hp = maxHp;
+    }
+
+    public boolean Fight(PokemonInfo fighter)
+    {
+        System.out.println(String.format("%s가 %s에게 공격을 했다!", name, fighter.name));
+        float pct = 1.0f;
+        int a_type = GameMng.getInstance().TypeToString(type);
+        int b_type = GameMng.getInstance().TypeToString(fighter.type);
+
+        int result = GameMng.getInstance().compatibility_Table[a_type][b_type];
+        if(result == 1)
+        {
+            pct = 0.8f;
+            System.out.println("공격은 별로였다..");
+        }
+        else if(result == 2)
+        {
+            pct = 1.25f;
+            System.out.println("공격은 굉장했다!!");
+        }else {
+            System.out.println("공격은 미미했다.");
+        }
+
+        int dmg = (int)(10 * ((float)atk/fighter.def) * pct) + 1;
+        fighter.hp -= dmg;
+
+        System.out.println(String.format("총 %d만큼 공격했다.", dmg));
+
+        System.out.println(FightInfo());
+        System.out.println(fighter.FightInfo());
+
+        if(fighter.hp <= 0)
+            return true;
+        return false;
+    }
+
+    public String FightInfo()
+    {
+        return String.format("%s - 남은 체력: %d/%d, 공격력: %d", name, hp,maxHp,atk);
+    }
+
+    public void AddExp(int exp)
+    {
+        this.exp += exp;
     }
 }
