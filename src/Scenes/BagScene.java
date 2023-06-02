@@ -10,10 +10,13 @@ public class BagScene extends Scene {
     public void Update()
     {
         super.Update();
-        if(GameMng.getInstance().scanner.nextInt() == 0){//뒤로가기
+        if(GameMng.getInstance().scanner.nextInt() == 0){
+            GameMng.getInstance().ChangePrevScene();
         }
         else if(GameMng.getInstance().scanner.nextInt() >= Bag.getInstance().getNowItemCount()){
-            // 잘못된 입력
+            System.out.println("잘못된 입력입니다.");
+            Draw();
+            return;
         }
         else {
             // 아이템 사용처리
