@@ -20,8 +20,8 @@ public class Revolution {
 
     public List<PokemonInfo> checkRevolution(List<PokemonInfo> myPokemonList, PokemonInfo pokemon){
         if(valLevel(pokemon)) {
-            myPokemonList.remove(pokemon);
             myPokemonList.add(addPokemon(pokemon));
+            myPokemonList.remove(pokemon);
         }
         return myPokemonList;
     }
