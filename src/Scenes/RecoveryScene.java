@@ -46,7 +46,14 @@ public class RecoveryScene extends Scene {
         }
 
         recoveryCompleted.set(true);
+        // 모든 포켓몬의 체력을 최대치로 회복
+        for (PokemonInfo pokemon : allPokemon) {
+            pokemon.hp= pokemon.maxHp;
+            if(pokemon.status!=2)
+                pokemon.status=1;
+        }
         System.out.println("모든 포켓몬의 체력이 회복되었습니다.");
+
         GameMng.getInstance().ChangePrevScene();
     }
 
