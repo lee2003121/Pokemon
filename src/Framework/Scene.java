@@ -1,6 +1,8 @@
 package Framework;
 
 public class Scene {
+
+    protected boolean isBattling = false;
     public void Start()
     {
 
@@ -19,4 +21,7 @@ public class Scene {
     {
     }
 
+    public boolean isBattling(){
+        return isBattling;
+    }
 }

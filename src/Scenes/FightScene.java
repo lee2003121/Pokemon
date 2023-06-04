@@ -20,6 +20,7 @@ public class FightScene extends Scene {
     @Override
     public void Start() {
         super.Start();
+        isBattling = true;
 
         myPokemons = MyPokemon.getInfo();
         allPokemons = Pokemon.getInfo();
@@ -76,6 +77,7 @@ public class FightScene extends Scene {
 
     void ResultShow(PokemonInfo winPokemon)
     {
+        isBattling = false;
         System.out.println(winPokemon.name + "이(가) 승리했다!");
 
         winPokemon.AddExp(15);
