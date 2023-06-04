@@ -7,6 +7,8 @@ import java.util.List;
 
 public class character {
     private Map now_map;
+    private int level;
+    private int exp;
     private Bag bag;
     private int pX;
     private int pY;
@@ -18,9 +20,45 @@ public class character {
     }
 
     public void init(){
+        level = 1;
+        exp = 0;
         bag = Bag.getInstance();
-    } // 초기설정으로 가방클래스 세팅
+    }
 
+    public int getLevel(){
+        return level;
+    }
+
+    public int getExp(){
+        return exp;
+    }
+
+    public void addExp(int earnExp){
+        exp += earnExp;
+        if(exp > 100){
+            levelUp(exp/100);
+            exp %= 100;
+        }
+    }
+
+    private void levelUp(int n)
+    {
+        if(level == 10){
+            System.out.println("트레이너 레벨이 이미 최고레벨입니다.");
+            return;
+        }
+
+        if(n > 0) {
+            System.out.println("트레이너레벨이 올랐습니다.");
+            level += n;
+            if (level >= 10) {
+                level = 10;
+                System.out.println("현재 최고레벨입니다.");
+            } else {
+                System.out.println("현재 " + level + "레벨 입니다.");
+            }
+        }
+    }
     /*
     좌표 반환
      */
