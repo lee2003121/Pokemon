@@ -12,9 +12,14 @@ import Game.PokemonInfo;
 public class CollectionScene extends Scene {
 
     private ArrayList<PokemonInfo> allPokemon;
+    private ArrayList<PokemonInfo> myPokemon;
 
     private ArrayList<PokemonInfo> getAllPokemon(){
         return Pokemon.getInfo();
+    }
+
+    private ArrayList<PokemonInfo> getMyPokemon(){
+        return MyPokemon.getInfo();
     }
 
     private PokemonInfo getPokemon(int id){
@@ -32,6 +37,34 @@ public class CollectionScene extends Scene {
         }
     }
 
+    public boolean hasBall(){
+        if(true){
+            System.out.println("몬스터 볼이 없습니다.");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isFullPokemon(){
+        if(myPokemon.size() >= 10) {
+            System.out.println("더 이상 포켓몬을 수집할 수 없습니다.");
+            return false;
+        }
+        return true;
+    }
+
+    public void askRemove(){
+
+    }
+
+    public void getDictionary(){
+
+    }
+
+    public void selectFightPokemon(){
+
+    }
+
     @Override
     public void Update() {
         try {
@@ -43,17 +76,27 @@ public class CollectionScene extends Scene {
         int rand = GameMng.getInstance().GetRandom().nextInt(101);
 
         allPokemon = getAllPokemon();
+        myPokemon = getMyPokemon();
 
         if(rand <= 28)
         {
-//            System.out.println("포켓몬을 발견하였습니다.");
             PokemonInfo wildPokemon = getPokemon(rand);
             System.out.println("야생 " + wildPokemon.name + "이(가) 나타났다!");
+
+            if(hasBall() && isFullPokemon()){
+
+            }else if(isFullPokemon()){
+                askRemove();
+            }
+
+            getDictionary();
+            selectFightPokemon();
+
             // 내가 몬스터볼이 없으면 중단
             // 더 이상 수집할 수 없으면 중단
             // 수집할 수 없으면 버릴 것인가
             // 도감 가져오기
-            //
+            // 대전용 몬스터
         }else {
             System.out.println("포켓몬을 발견하지 못했습니다. 다시 찾습니다..");
         }
