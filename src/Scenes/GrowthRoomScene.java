@@ -3,7 +3,11 @@ package Scenes;
 import Framework.Scene;
 import Game.GrowthRoom;
 import Game.PokemonInfo;
+import Game.MyPokemon;
 import Mng.GameMng;
+import Game.Dictionary;
+import java.util.ArrayList;
+
 public class GrowthRoomScene extends Scene{
     @Override
     public void Update(){
@@ -17,12 +21,18 @@ public class GrowthRoomScene extends Scene{
             GrowthRoom.getInstance().takeGrowthPokemon(inputData);
         }
         else if(inputData == GrowthRoom.getInstance().getPokemonCount()){
-            /*포켓몬 추가하기*/
-            PokemonInfo p;
-            GrowthRoom.getInstance().addGrowthPokemon(p);
+            ArrayList<PokemonInfo> list = MyPokemon.getInfo();
+            Dictionary.showDictionary();
+            int inputData2 = GameMng.getInstance().scanner.nextInt();
+            if(list.get(inputData2 - 1).name == null){
+                System.out.println("잘못된 입력입니다.");
+                this.Draw();
+                return;
+            }
+            GrowthRoom.getInstance().addGrowthPokemon(list.get(inputData2 - 1));
         }
         else{
-            /*잘못된 입력*/
+            System.out.println("잘못된 입력입니다.");
             this.Draw();
             return;
         }
