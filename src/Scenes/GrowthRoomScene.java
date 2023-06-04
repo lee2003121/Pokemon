@@ -3,11 +3,9 @@ package Scenes;
 import Framework.Scene;
 import Game.GrowthRoom;
 import Game.PokemonInfo;
-import Game.MyPokemon;
 import Mng.GameMng;
-import Game.Dictionary;
 import Game.character;
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class GrowthRoomScene extends Scene{

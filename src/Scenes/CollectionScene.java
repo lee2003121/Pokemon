@@ -7,7 +7,6 @@ import Mng.GameMng;
 import Game.character;
 import Item.*;
 import Game.PokemonInfo;
-import Game.Dictionary;
 
 import java.util.ArrayList;
 import java.util.List;

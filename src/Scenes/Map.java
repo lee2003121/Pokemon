@@ -1,4 +1,4 @@
-package Game;
+package Scenes;
 
 import java.io.*;
 

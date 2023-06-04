@@ -30,6 +30,9 @@ public class MenuScene extends Scene {
                 GameMng.getInstance().ChangeState(new GrowthRoomScene());
                 break;
             case 7:
+                GameMng.getInstance().ChangeState(new Dictionary());
+                break;
+            case 8:
                 System.exit(0);
                 break;
         }
@@ -44,6 +47,7 @@ public class MenuScene extends Scene {
         System.out.println("4. 상점");
         System.out.println("5. 회복 센터");
         System.out.println("6. 성장의 방");
-        System.out.println("7. 나가기");
+        System.out.println("7. 도감");
+        System.out.println("8. 나가기");
     }
 }
