@@ -1,12 +1,12 @@
 package Game;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Dictionary {
     // 포켓몬 도감을 출력하는 printDictionary() 메서드
     public static void printDictionary(){
         // MyPokemonList에 내가 보유한 포켓몬 객체 배열을 받음
-        List<PokemonInfo> MyPokemonList = MyPokemon.getInfo();
+        ArrayList<PokemonInfo> MyPokemonList = MyPokemon.getInfo();
         // 도감에서 표를 출력하기 위한 tab 길이 지정 (\t는 너무 길었음)
         String tab = "   ";
 

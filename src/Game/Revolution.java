@@ -1,5 +1,5 @@
 package Game;
-import java.util.List;
+import java.util.ArrayList;
 
 
 public class Revolution {
@@ -10,9 +10,9 @@ public class Revolution {
     public boolean isPosRev(PokemonInfo prevPok, PokemonInfo nextPok){
         return prevPok.hp < nextPok.hp;
     }
-    public List<PokemonInfo> checkRevolution(List<PokemonInfo> myPokemonList, PokemonInfo pokemon){
+    public ArrayList<PokemonInfo> checkRevolution(ArrayList<PokemonInfo> myPokemonList, PokemonInfo pokemon){
         if(valLevel(pokemon)){
-            List<PokemonInfo> allPokemon = Pokemon.getInfo();
+            ArrayList<PokemonInfo> allPokemon = Pokemon.getInfo();
             if(isPosRev(allPokemon.get(allPokemon.indexOf(pokemon)), allPokemon.get((allPokemon.indexOf(pokemon)) + 1))){
                 PokemonInfo newPokemon = allPokemon.get((allPokemon.indexOf(pokemon)) + 1);
                 myPokemonList.remove(pokemon);
