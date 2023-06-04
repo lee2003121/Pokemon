@@ -49,12 +49,12 @@ public class PokemonInfo{
 
     public String GetSmallInfo_Hp()
     {
-        return String.format("%s / %s 속성 / Hp: %d / Atk: %d / Level: %d",name,type,hp,atk,level);
+        return String.format("%s %s / %s 속성 / Hp: %d / Atk: %d / Level: %d",name,status == 1 ? "" : "(기절)",type,hp,atk,level);
     }
 
     public String GetSmallInfo_MaxHp()
     {
-        return String.format("%s / %s 속성 / Hp: %d / Atk: %d / Level: %d",name,type,hp,atk,level);
+        return String.format("%s %s / %s 속성 / Hp: %d / Atk: %d / Level: %d",name,status == 1 ? "" : "(기절)",type,hp,atk,level);
     }
 
     public void Init()
@@ -86,19 +86,23 @@ public class PokemonInfo{
         int dmg = (int)(10 * ((float)atk/fighter.def) * pct) + 1;
         fighter.hp -= dmg;
 
-        System.out.println(String.format(" {총 %d만큼 공격했다}", dmg));
+        System.out.println(String.format(" (총 %d만큼 공격했다)", dmg));
 
-        System.out.println(FightInfo());
+        //System.out.println(FightInfo());
         System.out.println(fighter.FightInfo());
 
         if(fighter.hp <= 0)
+        {
+            fighter.status = 0;
+            System.out.println(fighter.name +"은(는) 쓰러졌다...");
             return true;
+        }
         return false;
     }
 
     public String FightInfo()
     {
-        return String.format("%s - 남은 체력: %d/%d, 공격력: %d", name, hp,maxHp,atk);
+        return String.format("%s %s- 남은 체력: %d/%d, 공격력: %d", name, status == 1 ? "" : "(기절)" , hp,maxHp,atk);
     }
 
     public void AddExp(int exp)

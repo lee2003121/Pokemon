@@ -22,6 +22,9 @@ public class Bag {
         itemList.add(new PokeBall("마스터볼", "최고 수준의 성능을 가진 최상의 포켓볼입니다.", Shop.MASTERBALL_PRICE, 1.0, ITEM_TYPE.MASTER_BALL));
         itemList.add(new Candy("캔디", "포켓몬의 경험치를 10 증가합니다.", Shop.MASTERBALL_PRICE, 10, ITEM_TYPE.CANDY));
 
+        addItem(ITEM_TYPE.NORMAL_HEAL);
+        addItem(ITEM_TYPE.EPIC_HEAL);
+
         coin = 1000;
         //loadData();
     }

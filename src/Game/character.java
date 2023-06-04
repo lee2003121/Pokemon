@@ -14,11 +14,6 @@ public class character implements Serializable {
     private int level;
     private int exp;
     private Bag bag;
-
-    character()
-    {
-        init();
-    }
     private static class lazyHolder{ // Singleton class
         public static character instance = new character();
     }
@@ -32,6 +27,7 @@ public class character implements Serializable {
         bag = Bag.getInstance();
 
         MyPokemonList = MyPokemon.getInfo();
+        FightPokemonList = MyPokemon.getInfo(); //TODO 나중에 이거 지워야함.
     }
 
     public void AddFightPokemon(PokemonInfo pokemon)
