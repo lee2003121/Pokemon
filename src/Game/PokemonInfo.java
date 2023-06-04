@@ -61,7 +61,7 @@ public class PokemonInfo{
 
     public boolean Fight(PokemonInfo fighter)
     {
-        System.out.println(String.format("%s가 %s에게 공격을 했다!", name, fighter.name));
+        System.out.println(String.format("%s이(가) %s에게 공격을 했다!", name, fighter.name));
         float pct = 1.0f;
         int a_type = GameMng.getInstance().TypeToString(type);
         int b_type = GameMng.getInstance().TypeToString(fighter.type);
@@ -70,20 +70,20 @@ public class PokemonInfo{
         if(result == 1)
         {
             pct = 0.8f;
-            System.out.println("공격은 별로였다..");
+            System.out.print("공격은 별로였다..");
         }
         else if(result == 2)
         {
             pct = 1.25f;
-            System.out.println("공격은 굉장했다!!");
+            System.out.print("공격은 굉장했다!!");
         }else {
-            System.out.println("공격은 미미했다.");
+            System.out.print("공격은 미미했다.");
         }
 
         int dmg = (int)(10 * ((float)atk/fighter.def) * pct) + 1;
         fighter.hp -= dmg;
 
-        System.out.println(String.format("총 %d만큼 공격했다.", dmg));
+        System.out.println(String.format(" {총 %d만큼 공격했다}", dmg));
 
         System.out.println(FightInfo());
         System.out.println(fighter.FightInfo());
