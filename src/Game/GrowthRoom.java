@@ -37,7 +37,12 @@ public class GrowthRoom {
             System.out.println("성장의 방이 이미 꽉 찼습니다.");
             return -1;
         }
+        if(p.status == 2){
+            System.out.println("이미 성장의 방에 들어가있는 포켓몬입니다.");
+            return -1;
+        }
         growthPokemonList.add(new GrowthPokemon(p, new Timestamp(System.currentTimeMillis())));
+        p.status = 2;
         return 0;
     }
 
