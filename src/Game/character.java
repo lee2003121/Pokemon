@@ -10,7 +10,7 @@ import java.util.List;
 public class character implements Serializable {
     private final String FILE_NAME = "character_data.km";
     public List<PokemonInfo> MyPokemonList;
-    private List<PokemonInfo> FightPokemonList;
+    public List<PokemonInfo> FightPokemonList;
     private int level;
     private int exp;
     private Bag bag;

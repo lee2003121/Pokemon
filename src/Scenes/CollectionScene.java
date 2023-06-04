@@ -9,6 +9,7 @@ import Item.*;
 import Game.PokemonInfo;
 import Game.Dictionary;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import Item.Item;
@@ -56,7 +57,22 @@ public class CollectionScene extends Scene {
 
 
     public void selectFightPokemon(){
+        List<PokemonInfo> fightPokemon = new ArrayList<>();
 
+        for(int i=0;i<character.getInstance().MyPokemonList.size(); i++)
+        {
+            System.out.println((i + 1) + ". " + character.getInstance().MyPokemonList.get(i).GetSmallInfo_MaxHp());
+        }
+
+        System.out.println("대전 모드에 넣을 포켓몬을 선택하세요.");
+        for(int i=0;i<3;i++)
+        {
+            System.out.println((i+1)+"번쨰 포켓몬 : ");
+            int select = GameMng.getInstance().scanner.nextInt() - 1;
+            fightPokemon.add(character.getInstance().MyPokemonList.get(select));
+            System.out.println(fightPokemon.get(i).name + "을(를) 추가했습니다.");
+        }
+        character.getInstance().FightPokemonList = fightPokemon;
     }
 
     public double selectBall() {
@@ -150,6 +166,7 @@ public class CollectionScene extends Scene {
             PokemonInfo wildPokemon = getPokemon(rand);
             System.out.println("야생 " + wildPokemon.name + "이(가) 나타났다!");
             runMenu(wildPokemon);
+
         }else {
             System.out.println("포켓몬을 발견하지 못했습니다. 다시 찾습니다..");
         }
