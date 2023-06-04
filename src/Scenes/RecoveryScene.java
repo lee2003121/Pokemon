@@ -1,16 +1,17 @@
 package Scenes;
-import Game.Pokemon;
+
 import Game.PokemonInfo;
 import Mng.GameMng;
+import Framework.Scene;
 
 import java.util.List;
 
-public class RecoveryScene {
-    private List<PokemonInfo> allPokemons;
+public class RecoveryScene extends Scene {
+    private List<PokemonInfo> allPokemon;
 
-    public void Update()
+    public void Start()
     {
-        allPokemons = GameMng.getInstance().AllPokemons;
+        allPokemon = GameMng.getInstance().AllPokemons;
         recoverAllPokemon();
     }
 
@@ -21,10 +22,11 @@ public class RecoveryScene {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        for (PokemonInfo pokemon : allPokemons) {
+        for (PokemonInfo pokemon : allPokemon) {
             pokemon.hp = pokemon.maxHp;
         }
         System.out.println("모든 포켓몬의 체력이 회복되었습니다.");
-        GameMng.getInstance().ChangeState(new MenuScene());
+
+        GameMng.getInstance().ChangePrevScene();
     }
 }
