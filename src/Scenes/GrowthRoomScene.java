@@ -17,9 +17,6 @@ public class GrowthRoomScene extends Scene{
             GameMng.getInstance().ChangePrevScene();
             return;
         }
-        else if(0 < inputData && inputData < GrowthRoom.getInstance().getPokemonCount()){
-            GrowthRoom.getInstance().takeGrowthPokemon(inputData);
-        }
         else if(inputData == GrowthRoom.getInstance().getPokemonCount()){
             ArrayList<PokemonInfo> list = MyPokemon.getInfo();
             Dictionary.showDictionary();
@@ -32,7 +29,7 @@ public class GrowthRoomScene extends Scene{
             GrowthRoom.getInstance().addGrowthPokemon(list.get(inputData2 - 1));
         }
         else{
-            System.out.println("잘못된 입력입니다.");
+            GrowthRoom.getInstance().takeGrowthPokemon(inputData);
             this.Draw();
             return;
         }

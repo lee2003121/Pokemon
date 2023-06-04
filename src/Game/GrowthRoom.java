@@ -1,5 +1,7 @@
 package Game;
 
+import Mng.GameMng;
+
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -52,16 +54,24 @@ public class GrowthRoom {
     }
 
     public int takeGrowthPokemon(int n){ //인덱스 n에 있는 포켓몬 꺼내기
-        try{
-            int exp = timeToExp(growthPokemonList.get(n).timestamp);
-            growthPokemonList.get(n).pokemon.AddExp(exp);
-            System.out.println(growthPokemonList.get(n).pokemon.name + "이(가) " + exp + "경험치를 획득하였습니다.");
-            growthPokemonList.remove(n);
-            return 0;
-        }catch(Exception e){
-            System.out.println("비어있는 포켓몬입니다.");
-            return -1;
+        GrowthPokemon p = growthPokemonList.get(n);
+        System.out.println(p.pokemon.name + "을(를) 꺼내시겠습니까?(Y/N)");
+        String ans = GameMng.getInstance().scanner.next();
+        if(ans.equals("N") || ans.equals("n")) return 1;
+        if(ans.equals("Y") || ans.equals("y")){
+            try{
+                int exp = timeToExp(p.timestamp);
+                p.pokemon.AddExp(exp);
+                System.out.println(p.pokemon.name + "이(가) " + exp + "경험치를 획득하였습니다.");
+                growthPokemonList.remove(n);
+                return 0;
+            }catch(Exception e){
+                System.out.println("잘못된 입력입니다.");
+                return -1;
+            }
         }
+        System.out.println("잘못된 입력입니다.");
+        return -1;
     }
 
     public int getPokemonCount(){
