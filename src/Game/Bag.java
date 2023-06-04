@@ -20,6 +20,8 @@ public class Bag {
         itemList.add(new PokeBall("슈퍼볼", "표준 포켓볼보다 높은 캐치율을 제공하는 좋은 고성능 볼입니다.", Shop.SUPERBALL_PRICE, 0.2, ITEM_TYPE.SUPER_BALL));
         itemList.add(new PokeBall("하이퍼볼", "슈퍼볼보다 높은 캐치율을 제공하는 고성능 볼입니다.", Shop.HYPERBALL_PRICE, 0.3, ITEM_TYPE.HYPER_BALL));
         itemList.add(new PokeBall("마스터볼", "최고 수준의 성능을 가진 최상의 포켓볼입니다.", Shop.MASTERBALL_PRICE, 1.0, ITEM_TYPE.MASTER_BALL));
+        itemList.add(new Candy("캔디", "포켓몬의 경험치를 10 증가합니다.", Shop.MASTERBALL_PRICE, 10, ITEM_TYPE.CANDY));
+
         coin = 1000;
         //loadData();
     }
@@ -48,12 +50,8 @@ public class Bag {
     }
 
     public void printBag() {
-        if (itemList.size() == 0) {
-            System.out.println("가방이 비어있습니다.");
-        } else {
-            for (int i = 0; i < itemList.size(); i++) {
-                System.out.println((i + 1) + ". " + itemList.get(i).getName() + " / " + itemList.get(i).getDescription() + " / 보유 갯수 : " + itemList.get(i).GetCount());
-            }
+        for (int i = 0; i < itemList.size(); i++) {
+            System.out.println((i + 1) + ". " + itemList.get(i));
         }
     }
 
@@ -117,5 +115,36 @@ public class Bag {
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("데이터 로드 실패: " + e.getMessage());
         }
+    }
+
+    public boolean HavePokeball()
+    {
+        for(int i=0;i<itemList.size();i++)
+        {
+            if(itemList.get(i).getType() != ITEM_TYPE.NORMAL_HEAL && itemList.get(i).getType() != ITEM_TYPE.EPIC_HEAL
+                    && itemList.get(i).GetCount() > 0)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean HaveHeal()
+    {
+        for(int i=0;i<itemList.size();i++)
+        {
+            if((itemList.get(i).getType() == ITEM_TYPE.NORMAL_HEAL || itemList.get(i).getType() == ITEM_TYPE.EPIC_HEAL)
+                    && itemList.get(i).GetCount() > 0)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public ArrayList<Item> GetItemList()
+    {
+        return itemList;
     }
 }

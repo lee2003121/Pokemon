@@ -6,5 +6,6 @@ public enum ITEM_TYPE {
     SUPER_BALL,
     MASTER_BALL,
     EPIC_HEAL,
-    NORMAL_HEAL
+    NORMAL_HEAL,
+    CANDY
 }
