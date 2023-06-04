@@ -1,12 +1,13 @@
 package Game;
 
-import java.util.ArrayList;
+import java.util.List;
+import Mng.*;
 
 public class Dictionary {
     // 포켓몬 도감을 출력하는 printDictionary() 메서드
     public void printDictionary(){
         // MyPokemonList에 내가 보유한 포켓몬 객체 배열을 받음
-        ArrayList<PokemonInfo> MyPokemonList = MyPokemon.getInfo();
+        List<PokemonInfo> MyPokemonList = GameMng.getInstance().AllPokemons;
         // 도감에서 표를 출력하기 위한 tab 길이 지정 (\t는 너무 길었음)
         String tab = "   ";
 
@@ -32,7 +33,7 @@ public class Dictionary {
     }
     public static void showDictionary(){
         // MyPokemonList에 내가 보유한 포켓몬 객체 배열을 받음
-        ArrayList<PokemonInfo> MyPokemonList = MyPokemon.getInfo();
+        List<PokemonInfo> MyPokemonList = character.getInstance().MyPokemonList;
         // 도감에서 표를 출력하기 위한 tab 길이 지정 (\t는 너무 길었음)
         String tab = "   ";
 

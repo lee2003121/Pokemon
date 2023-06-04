@@ -4,7 +4,7 @@ import Define.ITEM_TYPE;
 import Framework.Scene;
 import Game.Bag;
 import Mng.GameMng;
-
+import Game.character;
 import Item.*;
 import java.util.ArrayList;
 import Game.MyPokemon;
@@ -17,23 +17,14 @@ import Item.Item;
 
 public class CollectionScene extends Scene {
 
-    private ArrayList<PokemonInfo> allPokemon;
-    private ArrayList<PokemonInfo> myPokemon;
     private final Item monster = Bag.getInstance().GetItem(ITEM_TYPE.NORMAL_BALL);
     private final Item superBall = Bag.getInstance().GetItem(ITEM_TYPE.SUPER_BALL);
     private final Item hyper = Bag.getInstance().GetItem(ITEM_TYPE.HYPER_BALL);
     private final Item master = Bag.getInstance().GetItem(ITEM_TYPE.MASTER_BALL);
 
-    private ArrayList<PokemonInfo> getAllPokemon(){
-        return Pokemon.getInfo();
-    }
-
-    private ArrayList<PokemonInfo> getMyPokemon(){
-        return MyPokemon.getInfo();
-    }
 
     private PokemonInfo getPokemon(int id){
-        return allPokemon.get(id);
+        return GameMng.getInstance().AllPokemons.get(id);
     }
 
     @Override
@@ -47,7 +38,7 @@ public class CollectionScene extends Scene {
     }
 
     public boolean isFullPokemon(){
-        return myPokemon.size() < 10;
+        return character.getInstance().MyPokemonList.size() < 10;
     }
 
     public void askRemove(PokemonInfo wildPokemon){
@@ -58,7 +49,7 @@ public class CollectionScene extends Scene {
             Dictionary.showDictionary();
             System.out.println("버릴 포켓몬의 ID를 입력하세요.");
             int id = scanner.nextInt();
-            myPokemon.remove(id);
+            character.getInstance().MyPokemonList.remove(id);
             collectPokemon(wildPokemon);
         }else if(yn.equals("n")){
             System.out.println("수집을 포기합니다.");
@@ -98,6 +89,7 @@ public class CollectionScene extends Scene {
             default:
                 System.out.println("ID를 정확히 입력해주세요");
                 selectBall();
+                break;
         }
         return 0;
     }
@@ -116,7 +108,7 @@ public class CollectionScene extends Scene {
         }else{
             double rate = selectBall();
             if(randomCollect(rate*100)){
-                myPokemon.add(wildPokemon);
+                character.getInstance().MyPokemonList.add(wildPokemon);
                 System.out.println("야생 " + wildPokemon.name + "을(를) 포획했다!");
             }else{
                 System.out.println("야생 " + wildPokemon.name + "이(가) 도망쳤다!");
@@ -135,12 +127,16 @@ public class CollectionScene extends Scene {
         switch (menu) {
             case 1 :
                 collectPokemon(wildPokemon);
+                break;
             case 2 :
                 Dictionary.showDictionary();
+                break;
             case 3:
                 selectFightPokemon();
+                break;
             default:
                 GameMng.getInstance().ChangePrevScene();
+                break;
         }
     }
 
@@ -153,9 +149,6 @@ public class CollectionScene extends Scene {
         }
 
         int rand = GameMng.getInstance().GetRandom().nextInt(50);
-
-        allPokemon = getAllPokemon();
-        myPokemon = getMyPokemon();
 
         if(rand <= 28)
         {

@@ -14,6 +14,11 @@ public class character implements Serializable {
     private int level;
     private int exp;
     private Bag bag;
+
+    character()
+    {
+        init();
+    }
     private static class lazyHolder{ // Singleton class
         public static character instance = new character();
     }
