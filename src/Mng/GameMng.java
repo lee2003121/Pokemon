@@ -1,6 +1,7 @@
 package Mng;
 
 import Framework.Scene;
+import Framework.SoundModule;
 import Game.PokemonInfo;
 import Scenes.MenuScene;
 
@@ -28,6 +29,8 @@ public class GameMng{
 
         String data = FileMng.getInstance().LoadFile("etc/compatibility.csv");
         compatibility_Table = ParseToCompatibility(data);
+
+        SoundModule.playBackgroundSound("etc/Background_music.wav");
     }
     private static GameMng instance;
     public boolean isPlaying = true;

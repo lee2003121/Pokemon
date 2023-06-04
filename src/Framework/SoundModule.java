@@ -4,7 +4,7 @@ import java.io.*;
 import javax.sound.sampled.*;
 public class SoundModule {
 
-    static void playSound(String fileName, int playTime){ // playTime은 millisecond단위, soundfile은 wav여야함
+    static public void playSound(String fileName, int playTime){ // playTime은 millisecond단위, soundfile은 wav여야함
         try {
             File file = new File(fileName);
             Clip clip = AudioSystem.getClip();
@@ -19,7 +19,7 @@ public class SoundModule {
             e.printStackTrace();
         }
     }
-    static void playBackgroundSound(String fileName){
+    static public void playBackgroundSound(String fileName){
         try {
             File file = new File(fileName);
             Clip clip = AudioSystem.getClip();
