@@ -17,20 +17,18 @@ public class GrowthRoomScene extends Scene{
             GameMng.getInstance().ChangePrevScene();
             return;
         }
-        else if(inputData == GrowthRoom.getInstance().getPokemonCount()){
+        else if(inputData == GrowthRoom.getInstance().getPokemonCount() + 1){
             ArrayList<PokemonInfo> list = MyPokemon.getInfo();
             Dictionary.showDictionary();
             int inputData2 = GameMng.getInstance().scanner.nextInt();
             if(list.get(inputData2 - 1).name == null){
                 System.out.println("잘못된 입력입니다.");
-                this.Draw();
                 return;
             }
             GrowthRoom.getInstance().addGrowthPokemon(list.get(inputData2 - 1));
         }
         else{
             GrowthRoom.getInstance().takeGrowthPokemon(inputData);
-            this.Draw();
             return;
         }
 
@@ -43,6 +41,6 @@ public class GrowthRoomScene extends Scene{
         System.out.println("최대 " + GrowthRoom.MAX_EXP + "경험치를 얻을 수 있습니다.");
         System.out.println("\n0. 뒤로가기");
         GrowthRoom.getInstance().printGrowthPokemon();
-        System.out.println(GrowthRoom.getInstance().getPokemonCount() + ". 포켓몬을 성장의 방에 두기");
+        System.out.println((GrowthRoom.getInstance().getPokemonCount() + 1) + ". 포켓몬을 성장의 방에 두기");
     }
 }
