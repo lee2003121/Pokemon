@@ -8,7 +8,7 @@ public class CollectionScene extends Scene {
 
     @Override
     public void Start() {
-        if(Bag.getInstance().HavePokeball())
+        if(true)
         {
             System.out.println("포켓몬을 찾기 시작합니다.");
         }else {
