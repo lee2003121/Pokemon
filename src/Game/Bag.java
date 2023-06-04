@@ -1,19 +1,27 @@
 package Game;
 
-import Item.Item;
+import Item.*;
 
 import java.io.*;
 import java.util.ArrayList;
 
 public class Bag {
-    public final int MaxItemCount = 30;
+    public final int MaxItemCount = 50;
     private ArrayList<Item> itemList;
     private int coin;
     private static final String FILE_NAME = "bag_data.km";
 
     private Bag() {
         itemList = new ArrayList<>();
-        coin = 0;
+        itemList.add(new HealingItem("일반 회복양", "포켓몬의 체력을 20 회복시킵니다.", 200, 20));
+        itemList.add(new HealingItem("일반 회복양", "포켓몬의 체력을 20 회복시킵니다.", 200, 20));
+        itemList.add(new PokeBall("몬스터볼", "특별한 캐치율을 제공하는 특수한 볼입니다.", 300, 0.5));
+        itemList.add(new PokeBall("몬스터볼", "특별한 캐치율을 제공하는 특수한 볼입니다.", 300, 0.5));
+        itemList.add(new PokeBall("몬스터볼", "특별한 캐치율을 제공하는 특수한 볼입니다.", 300, 0.5));
+        itemList.add(new PokeBall("몬스터볼", "특별한 캐치율을 제공하는 특수한 볼입니다.", 300, 0.5));
+        itemList.add(new PokeBall("몬스터볼", "특별한 캐치율을 제공하는 특수한 볼입니다.", 300, 0.5));
+        coin = 10000;
+        loadData();
     }
 
     private static class LazyHolder {
@@ -76,6 +84,7 @@ public class Bag {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
             oos.writeObject(itemList);
             oos.writeInt(coin);
+            oos.flush();
             System.out.println("데이터 저장 완료");
         } catch (IOException e) {
             System.out.println("데이터 저장 실패: " + e.getMessage());

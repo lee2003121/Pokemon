@@ -13,7 +13,9 @@ public class ShopScene extends Scene {
         super.Update();
         int inputData = GameMng.getInstance().scanner.nextInt();
         switch(inputData){
-            case 0: /*뒤로가기*/ break;
+            case 0: GameMng.getInstance().ChangeState(new MenuScene());
+                    Bag.getInstance().saveData();
+            break;
             case 1: shop.buyPotion(); break;
             case 2: shop.buyAdvancedPotion(); break;
             case 3: shop.buyMonsterBall(); break;
@@ -26,6 +28,7 @@ public class ShopScene extends Scene {
     @Override
     public void Draw(){
         super.Draw();
+        System.out.println("현재 보유 코인 : " + Bag.getInstance().getCoin());
         System.out.println("0. 뒤로가기");
         System.out.println("1. 일반 회복약\t포켓몬의 체력을 20 회복시킵니다.\t200coin");
         System.out.println("2. 고급 회복약\t포켓몬의 체력을 50 회복시킵니다.\t500coin");
