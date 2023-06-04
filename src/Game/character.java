@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class character {
+    public List<PokemonInfo> MyPokemonList;
+    private List<PokemonInfo> FightPokemonList;
     private Map now_map;
     private int level;
     private int exp;
@@ -23,7 +25,27 @@ public class character {
         level = 1;
         exp = 0;
         bag = Bag.getInstance();
+
+        MyPokemonList = MyPokemon.getInfo();
     }
+
+    public void AddFightPokemon(PokemonInfo pokemon)
+    {
+        if(FightPokemonList.size() + 1 < 3)
+            FightPokemonList.add(pokemon);
+    }
+
+    public boolean FightPokemonIsFull()
+    {
+        return FightPokemonList.size() >= 2;
+    }
+
+    public List<PokemonInfo> GetFightPokemonList(){return FightPokemonList;}
+
+    public void RemovePokemon(int index) {
+        FightPokemonList.remove(index);
+    }
+
 
     public int getLevel(){
         return level;
