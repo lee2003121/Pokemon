@@ -2,7 +2,9 @@ package Item;
 
 import Define.ITEM_TYPE;
 
-public class Item {
+import java.io.Serializable;
+
+public class Item implements Serializable {
     private String name;
     private String description;
     private int price;
