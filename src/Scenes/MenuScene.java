@@ -30,6 +30,9 @@ public class MenuScene extends Scene {
                 GameMng.getInstance().ChangeState(new GrowthRoomScene());
                 break;
             case 7:
+                GameMng.getInstance().ChangeState(new Dictionary());
+                break;
+            case 8:
                 System.exit(0);
                 break;
         }
@@ -38,12 +41,13 @@ public class MenuScene extends Scene {
     @Override
     public void Draw() {
         super.Draw();
-        System.out.println("1. FIGHT");
-        System.out.println("2. COLLECTION");
-        System.out.println("3. BAG");
-        System.out.println("4. SHOP");
-        System.out.println("5. Recovery");
-        System.out.println("6. GROWTHROOM");
-        System.out.println("7. QUIT");
+        System.out.println("1. 대전모드");
+        System.out.println("2. 수집모드");
+        System.out.println("3. 가방");
+        System.out.println("4. 상점");
+        System.out.println("5. 회복 센터");
+        System.out.println("6. 성장의 방");
+        System.out.println("7. 도감");
+        System.out.println("8. 나가기");
     }
 }

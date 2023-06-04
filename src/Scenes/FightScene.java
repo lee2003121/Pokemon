@@ -18,8 +18,15 @@ public class FightScene extends Scene {
     @Override
     public void Start() {
         super.Start();
-        isBattling = true;
 
+        if(IsFightState() == false)
+        {
+            System.out.println("전투에 사용할 포켓몬이 없어 대전 포켓몬을 설정해 주세요.");
+            GameMng.getInstance().ChangeState(new MenuScene());
+            return;
+        }
+
+        isBattling = true;
         fightPokemon = new ArrayList<>();
 
         System.out.println("=====상대 포켓몬=====");

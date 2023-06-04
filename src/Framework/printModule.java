@@ -1,7 +1,6 @@
 package Framework;
 
-import Game.Map;
-import Game.character;
+import Scenes.Map;
 
 public class printModule {
     final private static int width = 122; // 콘솔 최대 너비
