@@ -2,9 +2,11 @@ package Mng;
 
 import Framework.Scene;
 import Framework.SoundModule;
+import Game.Pokemon;
 import Game.PokemonInfo;
 import Scenes.MenuScene;
 
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -19,6 +21,8 @@ public class GameMng{
     //상성표 데이터
     public int[][] compatibility_Table;
 
+    public List<PokemonInfo> AllPokemons;
+
     private GameMng() {
         //메뉴에서 시작
         curScene = new MenuScene();
@@ -31,6 +35,8 @@ public class GameMng{
         compatibility_Table = ParseToCompatibility(data);
 
         SoundModule.playBackgroundSound("etc/Background_music.wav");
+
+        AllPokemons = Pokemon.getInfo();
     }
     private static GameMng instance;
     public boolean isPlaying = true;
