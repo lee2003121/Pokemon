@@ -204,7 +204,7 @@ public class FightScene extends Scene {
         int amount = ((HealingItem)myItemList.get(select - 1)).getHealingPower();
 
         if(playerSelectPokemon.hp + amount > playerSelectPokemon.maxHp)
-            amount -= playerSelectPokemon.hp + amount - playerSelectPokemon.maxHp
+            amount -= playerSelectPokemon.hp + amount - playerSelectPokemon.maxHp;
 
         playerSelectPokemon.hp += amount;
         System.out.println("HP " + amount+"만큼 회복하였습니다!");
