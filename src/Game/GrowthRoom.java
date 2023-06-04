@@ -33,12 +33,23 @@ public class GrowthRoom {
     }
 
     public int addGrowthPokemon(PokemonInfo p){
-        if(growthPokemonList.size() == maxSize) {
-            System.out.println("성장의 방이 이미 꽉 찼습니다.");
+        try{
+            if(growthPokemonList.size() == maxSize) {
+                System.out.println("성장의 방이 이미 꽉 찼습니다.");
+                return -1;
+            }
+            if(p.status == 2){
+                System.out.println("이미 성장의 방에 들어가있는 포켓몬입니다.");
+                return -1;
+            }
+            growthPokemonList.add(new GrowthPokemon(p, new Timestamp(System.currentTimeMillis())));
+            p.status = 2;
+            return 0;
+        }catch(Exception e){
+            System.out.println("잘못된 입력입니다.");
             return -1;
         }
-        growthPokemonList.add(new GrowthPokemon(p, new Timestamp(System.currentTimeMillis())));
-        return 0;
+
     }
 
     public void printGrowthPokemon(){
@@ -66,6 +77,7 @@ public class GrowthRoom {
                 int exp = timeToExp(p.timestamp);
                 p.pokemon.AddExp(exp);
                 System.out.println(p.pokemon.name + "이(가) " + exp + "경험치를 획득하였습니다.");
+                p.pokemon.status = 1;
                 growthPokemonList.remove(n - 1);
                 return 0;
             }
