@@ -31,29 +31,34 @@ public class BagScene extends Scene {
                 return;
             }
             else{
-                int inputData2 = GameMng.getInstance().scanner.nextInt();
-                switch (inputData2){
+                // int inputData2 = GameMng.getInstance().scanner.nextInt();
+                switch (inputData){
                     case 1: case 2: case 3: case 4: case 5: case 6:
                         System.out.println("비전투중에 사용할 수 없는 아이템입니다.");
                         break;
                     case 7:
-                        Candy item = (Candy)Bag.getInstance().GetItem(ITEM_TYPE.CANDY);
+                        try {
+                            Candy item = (Candy)Bag.getInstance().GetItem(ITEM_TYPE.CANDY);
 
-                        if(item.GetCount() > 0)
-                        {
-                            for(int i=0;i<character.getInstance().MyPokemonList.size();i++)
+                            if(item.GetCount() > 0)
                             {
-                                System.out.println((i+1)+", " + character.getInstance().MyPokemonList.get(i));
-                            }
-                            item.UseItem();
-                            System.out.println("레벨을 올릴 포켓몬을 선택하세요");
-                            int select = GameMng.getInstance().scanner.nextInt();
-                            character.getInstance().MyPokemonList.get(select).level++;
-                            System.out.println(character.getInstance().MyPokemonList.get(select).name + "의 레벨을 1 증가 시켰습니다.");
-                            character.getInstance().MyPokemonList.get(select).checkRevolution();
+                                for(int i=0;i<character.getInstance().MyPokemonList.size();i++)
+                                {
+                                    System.out.println((i+1)+", " + character.getInstance().MyPokemonList.get(i).GetSmallInfo_Hp());
+                                }
+                                item.UseItem();
+                                System.out.println("레벨을 올릴 포켓몬을 선택하세요");
+                                int select = GameMng.getInstance().scanner.nextInt() - 1;
+                                character.getInstance().MyPokemonList.get(select).level++;
+                                System.out.println(character.getInstance().MyPokemonList.get(select).name + "의 레벨을 1 증가 시켰습니다.");
+                                character.getInstance().MyPokemonList.get(select).checkRevolution();
 
-                        }else {
-                            System.out.println("사탕이 없어 레벨업을 할 수가 없습니다.");
+                            }else {
+                                System.out.println("사탕이 없어 레벨업을 할 수가 없습니다.");
+                            }
+                        }catch (Exception e)
+                        {
+                            e.printStackTrace();
                         }
                 }
             }

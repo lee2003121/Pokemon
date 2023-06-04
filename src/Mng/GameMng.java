@@ -4,6 +4,7 @@ import Framework.Scene;
 import Framework.SoundModule;
 import Game.Pokemon;
 import Game.PokemonInfo;
+import Game.character;
 import Scenes.MenuScene;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class GameMng{
     public List<PokemonInfo> AllPokemons;
 
     private GameMng() {
+        character.getInstance().loadData();
         //메뉴에서 시작
         curScene = new MenuScene();
         curScene.Start();

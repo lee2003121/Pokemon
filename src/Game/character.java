@@ -105,6 +105,12 @@ public class character implements Serializable {
 
     public void loadData() {
         bag.loadData();
+
+        File file = new File(FILE_NAME);
+
+        if(file.exists() == false)
+            saveData();
+
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
             MyPokemonList = (List<PokemonInfo>)ois.readObject();
             FightPokemonList = (List<PokemonInfo>)ois.readObject();
@@ -113,6 +119,7 @@ public class character implements Serializable {
             System.out.println("데이터 로드 완료");
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("데이터 로드 실패: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

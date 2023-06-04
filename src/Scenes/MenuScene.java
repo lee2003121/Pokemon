@@ -6,12 +6,6 @@ import Game.character;
 import Mng.GameMng;
 
 public class MenuScene extends Scene {
-
-    @Override
-    public void Start() {
-        character.getInstance().loadData();
-    }
-
     @Override
     public  void Update()
     {

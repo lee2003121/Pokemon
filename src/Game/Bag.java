@@ -34,6 +34,12 @@ public class Bag {
         addItem(ITEM_TYPE.NORMAL_BALL);
         addItem(ITEM_TYPE.MASTER_BALL);
 
+        addItem(ITEM_TYPE.CANDY);
+        addItem(ITEM_TYPE.CANDY);
+        addItem(ITEM_TYPE.CANDY);
+        addItem(ITEM_TYPE.CANDY);
+        addItem(ITEM_TYPE.CANDY);
+
         loadData();
     }
 
@@ -119,6 +125,13 @@ public class Bag {
     }
 
     public void loadData() {
+
+
+        File file = new File(FILE_NAME);
+
+        if(file.exists() == false)
+            saveData();
+
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
             itemList = (ArrayList<Item>) ois.readObject();
             coin = ois.readInt();

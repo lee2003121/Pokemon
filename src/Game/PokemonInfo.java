@@ -2,9 +2,10 @@ package Game;
 
 import Mng.GameMng;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PokemonInfo{
+public class PokemonInfo implements Serializable {
 
     public int id;
     // 포켓몬 id
@@ -51,12 +52,12 @@ public class PokemonInfo{
 
     public String GetSmallInfo_Hp()
     {
-        return String.format("%s %s / %s 속성 / Hp: %d / Atk: %d / Level: %d",name,status == 1 ? "" : "(기절)",type,hp,atk,level);
+        return String.format("%s %s / %s 속성 / Hp: %d / Atk: %d / Level: %d(%d/%d)",name,status == 1 ? "" : "(기절)",type,hp,atk,level,exp,15);
     }
 
     public String GetSmallInfo_MaxHp()
     {
-        return String.format("%s %s / %s 속성 / Hp: %d / Atk: %d / Level: %d",name,status == 1 ? "" : "(기절)",type,hp,atk,level);
+        return String.format("%s %s / %s 속성 / Hp: %d / Atk: %d / Level: %d(%d/%d)",name,status == 1 ? "" : "(기절)",type,hp,atk,level,exp,15);
     }
 
     public void Init()

@@ -136,6 +136,7 @@ public class FightScene extends Scene {
                 character.getInstance().FightPokemonList.get(i).AddExp(GameMng.getInstance().GetRandom().nextInt(10,20));
             }
 
+            Bag.getInstance().addCoin(300);
             Bag.getInstance().addItem(ITEM_TYPE.CANDY);
 
             GameOver();
@@ -154,6 +155,11 @@ public class FightScene extends Scene {
         }
 
         System.out.println("플레이어가 패배하였습니다...");
+        for(int i=0;i<character.getInstance().FightPokemonList.size();i++)
+        {
+            character.getInstance().FightPokemonList.get(i).AddExp(GameMng.getInstance().GetRandom().nextInt(5,10));
+        }
+        Bag.getInstance().addCoin(100);
         GameOver();
     }
 
@@ -220,7 +226,6 @@ public class FightScene extends Scene {
 
         if(playerSelectPokemon.hp > playerSelectPokemon.maxHp)
             playerSelectPokemon.hp = playerSelectPokemon.maxHp;
-
 
         System.out.println("HP " + amount+"만큼 회복하였습니다!");
     }
