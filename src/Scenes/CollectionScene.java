@@ -127,7 +127,7 @@ public class CollectionScene extends Scene {
     public void runMenu(PokemonInfo wildPokemon){
         Scanner scanner = new Scanner(System.in);
         System.out.println("1 : 수집하기");
-        System.out.println("2 : 도감보기");
+        System.out.println("2 : 내가 보유한 포켓몬");
         System.out.println("3 : 대전 포켓몬 선택하기");
         System.out.println("종료하려면 아무 키나 입력");
         int menu = scanner.nextInt();
@@ -136,7 +136,7 @@ public class CollectionScene extends Scene {
             case 1 :
                 collectPokemon(wildPokemon);
             case 2 :
-                getDictionary();
+                Dictionary.showDictionary();
             case 3:
                 selectFightPokemon();
             default:
