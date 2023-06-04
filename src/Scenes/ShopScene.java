@@ -51,5 +51,6 @@ public class ShopScene extends Scene {
         }else {
             System.out.println("돈이 부족하여 " + item.getName()+"을(를) 구매할 수 없습니다.");
         }
+        Bag.getInstance().saveData();
     }
 }

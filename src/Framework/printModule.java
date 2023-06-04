@@ -81,6 +81,7 @@ public class printModule {
         }
     }
 
+    /*
     public void printScreen(character player) { //캐릭터 위치를 'A'로 출력 나머지는 화면 그대로
         int x, y;
         int pX = player.getX();
@@ -94,6 +95,7 @@ public class printModule {
         }
     }
 
+
     public void printScreen(character player, int millisecond){
         this.printScreen(player);
         try{
@@ -102,6 +104,7 @@ public class printModule {
             // sleep실패하면 뭐 아쉽게 된거지
         }
     }
+    */
 
     public void clear() { // 화면을 지우는 함수
         for(int i = 0; i < height; i++) System.out.println(); // 콘솔 최대 높이만큼 줄바꿈해서 지워진것 처럼 보임
