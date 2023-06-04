@@ -3,6 +3,9 @@ package Game;
 import Mng.GameMng;
 
 public class PokemonInfo{
+
+    public int id;
+    // 포켓몬 id
     public String name;
     // 포켓몬 이름
     public String type;

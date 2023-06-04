@@ -27,6 +27,7 @@ public class MyPokemon {
                 String[] fields = line.split(csvSplitBy);
                 PokemonInfo Pokemon = new PokemonInfo();
                 // 포켓몬 객체의 필드에 각각의 속성을 삽입
+                Pokemon.id = Integer.parseInt(fields[0]);
                 Pokemon.name = fields[1];
                 Pokemon.atk = Integer.parseInt(fields[2]);
                 Pokemon.def = Integer.parseInt(fields[3]);
