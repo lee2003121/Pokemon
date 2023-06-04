@@ -76,6 +76,7 @@ public class Bag {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
             oos.writeObject(itemList);
             oos.writeInt(coin);
+            oos.flush();
             System.out.println("데이터 저장 완료");
         } catch (IOException e) {
             System.out.println("데이터 저장 실패: " + e.getMessage());
