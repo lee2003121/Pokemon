@@ -58,4 +58,9 @@ public class Item implements Serializable {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s / %s / 보유 갯수 : %d", name, description, count);
+    }
 }
