@@ -19,6 +19,7 @@ public class SavePokemon {
                 PokemonInfo data = myList.get(i);
 
                 String[] rowData = new String[12];
+                rowData[0] = Integer.toString(i+1);
                 rowData[1] = data.name;
                 rowData[2] = Integer.toString(data.atk);
                 rowData[3] = Integer.toString(data.def);
