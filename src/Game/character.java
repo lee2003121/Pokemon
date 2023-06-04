@@ -54,9 +54,4 @@ public class character {
         bag.addCoin(amount);
         System.out.println(amount + "코인을 획득하였습니다.");
     }
-
-    public void enterShop(Shop shop) {
-        shop.buyPotion();
-        shop.buySuperBall();
-    }
 }
