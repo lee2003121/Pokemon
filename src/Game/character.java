@@ -83,12 +83,12 @@ public class character implements Serializable {
     }
 
     public void saveData() {
+        bag.saveData();
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
             oos.writeObject(MyPokemonList);
             oos.writeObject(FightPokemonList);
             oos.writeInt(level);
             oos.writeInt(exp);
-            oos.writeObject(bag);
             oos.flush();
             System.out.println("데이터 저장 완료");
         } catch (IOException e) {
@@ -97,12 +97,12 @@ public class character implements Serializable {
     }
 
     public void loadData() {
+        bag.loadData();
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
             MyPokemonList = (List<PokemonInfo>)ois.readObject();
             FightPokemonList = (List<PokemonInfo>)ois.readObject();
             level = ois.readInt();
             exp = ois.readInt();
-            bag = (Bag)ois.readObject();
             System.out.println("데이터 로드 완료");
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("데이터 로드 실패: " + e.getMessage());
