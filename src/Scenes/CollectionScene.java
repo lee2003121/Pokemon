@@ -145,7 +145,7 @@ public class CollectionScene extends Scene {
                     collectPokemon(wildPokemon);
 
                 }else {
-                    System.out.println("포켓몬을 발견하지 못했습니다. 다시 찾습니다..");
+                    System.out.println("포켓몬을 발견하지 못했습니다. 다시 찾습니다...");
                 }
 
                 break;
