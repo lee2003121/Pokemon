@@ -33,7 +33,10 @@ public class GrowthRoom {
     }
 
     public int addGrowthPokemon(PokemonInfo p){
-        if(growthPokemonList.size() == maxSize) return -1;
+        if(growthPokemonList.size() == maxSize) {
+            System.out.println("성장의 방이 이미 꽉 찼습니다.");
+            return -1;
+        }
         growthPokemonList.add(new GrowthPokemon(p, new Timestamp(System.currentTimeMillis())));
         return 0;
     }
@@ -55,7 +58,7 @@ public class GrowthRoom {
 
     public int takeGrowthPokemon(int n){ //인덱스 n에 있는 포켓몬 꺼내기
         try{
-            GrowthPokemon p = growthPokemonList.get(n);
+            GrowthPokemon p = growthPokemonList.get(n - 1);
             System.out.println(p.pokemon.name + "을(를) 꺼내시겠습니까?(Y/N)");
             String ans = GameMng.getInstance().scanner.next();
             if(ans.equals("N") || ans.equals("n")) return 1;
@@ -63,12 +66,13 @@ public class GrowthRoom {
                 int exp = timeToExp(p.timestamp);
                 p.pokemon.AddExp(exp);
                 System.out.println(p.pokemon.name + "이(가) " + exp + "경험치를 획득하였습니다.");
-                growthPokemonList.remove(n);
+                growthPokemonList.remove(n - 1);
                 return 0;
             }
             return -1;
         }catch(Exception e) {
             System.out.println("잘못된 입력입니다.");
+            e.printStackTrace();
             return -1;
         }
     }
