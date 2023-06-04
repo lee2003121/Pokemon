@@ -47,14 +47,14 @@ public class BagScene extends Scene {
                                     System.out.println((i+1)+", " + character.getInstance().MyPokemonList.get(i).GetSmallInfo_Hp());
                                 }
                                 item.UseItem();
-                                System.out.println("레벨을 올릴 포켓몬을 선택하세요");
+                                System.out.println("경험치를 올릴 포켓몬을 선택하세요");
                                 int select = GameMng.getInstance().scanner.nextInt() - 1;
                                 character.getInstance().MyPokemonList.get(select).level++;
-                                System.out.println(character.getInstance().MyPokemonList.get(select).name + "의 레벨을 1 증가 시켰습니다.");
+                                System.out.println(character.getInstance().MyPokemonList.get(select).name + "의 경험치를 10 증가 시켰습니다.");
                                 character.getInstance().MyPokemonList.get(select).checkRevolution();
 
                             }else {
-                                System.out.println("사탕이 없어 레벨업을 할 수가 없습니다.");
+                                System.out.println("사탕이 없어 경험치를 올릴 수 없습니다.");
                             }
                         }catch (Exception e)
                         {

@@ -66,7 +66,7 @@ public class CollectionScene extends Scene {
         System.out.println("대전 모드에 넣을 포켓몬을 선택하세요.");
         for(int i=0;i<3;i++)
         {
-            System.out.println((i+1)+"번쨰 포켓몬 : ");
+            System.out.print((i+1)+"번쨰 포켓몬 : ");
             int select = GameMng.getInstance().scanner.nextInt() - 1;
             fightPokemon.add(character.getInstance().MyPokemonList.get(select));
             System.out.println(fightPokemon.get(i).name + "을(를) 추가했습니다.");
@@ -136,16 +136,19 @@ public class CollectionScene extends Scene {
 
         switch (menu) {
             case 1 :
-                int rand = GameMng.getInstance().GetRandom().nextInt(40);
-                if(rand <= 28)
+                while (true)
                 {
-                    System.out.println("포켓몬을 찾기 시작합니다.");
-                    PokemonInfo wildPokemon = getPokemon(rand);
-                    System.out.println("야생 " + wildPokemon.name + "이(가) 나타났다!");
-                    collectPokemon(wildPokemon);
-
-                }else {
-                    System.out.println("포켓몬을 발견하지 못했습니다. 다시 찾습니다...");
+                    int rand = GameMng.getInstance().GetRandom().nextInt(40);
+                    if(rand <= 28)
+                    {
+                        System.out.println("포켓몬을 찾기 시작합니다.");
+                        PokemonInfo wildPokemon = getPokemon(rand);
+                        System.out.println("야생 " + wildPokemon.name + "이(가) 나타났다!");
+                        collectPokemon(wildPokemon);
+                        break;
+                    }else {
+                        System.out.println("포켓몬을 발견하지 못했습니다. 다시 찾습니다...");
+                    }
                 }
 
                 break;
