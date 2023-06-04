@@ -1,6 +1,10 @@
 package Define;
 
 public enum ITEM_TYPE {
-    POKEBALL,
-    HEAL
+    NORMAL_BALL,
+    HYPER_BALL,
+    SUPER_BALL,
+    MASTER_BALL,
+    EPIC_HEAL,
+    NORMAL_HEAL
 }
