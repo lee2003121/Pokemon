@@ -54,24 +54,23 @@ public class GrowthRoom {
     }
 
     public int takeGrowthPokemon(int n){ //인덱스 n에 있는 포켓몬 꺼내기
-        GrowthPokemon p = growthPokemonList.get(n);
-        System.out.println(p.pokemon.name + "을(를) 꺼내시겠습니까?(Y/N)");
-        String ans = GameMng.getInstance().scanner.next();
-        if(ans.equals("N") || ans.equals("n")) return 1;
-        if(ans.equals("Y") || ans.equals("y")){
-            try{
+        try{
+            GrowthPokemon p = growthPokemonList.get(n);
+            System.out.println(p.pokemon.name + "을(를) 꺼내시겠습니까?(Y/N)");
+            String ans = GameMng.getInstance().scanner.next();
+            if(ans.equals("N") || ans.equals("n")) return 1;
+            if(ans.equals("Y") || ans.equals("y")){
                 int exp = timeToExp(p.timestamp);
                 p.pokemon.AddExp(exp);
                 System.out.println(p.pokemon.name + "이(가) " + exp + "경험치를 획득하였습니다.");
                 growthPokemonList.remove(n);
                 return 0;
-            }catch(Exception e){
-                System.out.println("잘못된 입력입니다.");
-                return -1;
             }
+            return -1;
+        }catch(Exception e) {
+            System.out.println("잘못된 입력입니다.");
+            return -1;
         }
-        System.out.println("잘못된 입력입니다.");
-        return -1;
     }
 
     public int getPokemonCount(){
