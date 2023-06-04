@@ -1,19 +1,19 @@
 package Game;
 
 import Game.Bag;
+import Item.Item;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class character {
+public class character implements Serializable {
+    private final String FILE_NAME = "character_data.km";
     public List<PokemonInfo> MyPokemonList;
     private List<PokemonInfo> FightPokemonList;
-    private Map now_map;
     private int level;
     private int exp;
     private Bag bag;
-    private int pX;
-    private int pY;
     private static class lazyHolder{ // Singleton class
         public static character instance = new character();
     }
@@ -81,37 +81,31 @@ public class character {
             }
         }
     }
-    /*
-    좌표 반환
-     */
-    public int getX(){
-        return pX;
+
+    public void saveData() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
+            oos.writeObject(MyPokemonList);
+            oos.writeObject(FightPokemonList);
+            oos.writeInt(level);
+            oos.writeInt(exp);
+            oos.writeObject(bag);
+            oos.flush();
+            System.out.println("데이터 저장 완료");
+        } catch (IOException e) {
+            System.out.println("데이터 저장 실패: " + e.getMessage());
+        }
     }
 
-    public int getY(){
-        return pY;
-    }
-    /*
-    이동하기
-     */
-    public void goRight(){
-        char nextTile = now_map.getMapData(this.pX, this.pY + 1);
-        if(Map.isPassable(nextTile)) pY = pY + 1;
-    }
-    public void goLeft(){
-        char nextTile = now_map.getMapData(this.pX, this.pY - 1);
-        if(Map.isPassable(nextTile)) pY = pY - 1;
-    }
-    public void goUp(){
-        char nextTile = now_map.getMapData(this.pX + 1, this.pY);
-        if(Map.isPassable(nextTile)) pX = pX + 1;
-    }
-    public void goDown(){
-        char nextTile = now_map.getMapData(this.pX - 1, this.pY);
-        if(Map.isPassable(nextTile)) pX = pX - 1;
-    }
-    public void collectCoin(int amount) {
-        bag.addCoin(amount);
-        System.out.println(amount + "코인을 획득하였습니다.");
+    public void loadData() {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
+            MyPokemonList = (List<PokemonInfo>)ois.readObject();
+            FightPokemonList = (List<PokemonInfo>)ois.readObject();
+            level = ois.readInt();
+            exp = ois.readInt();
+            bag = (Bag)ois.readObject();
+            System.out.println("데이터 로드 완료");
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("데이터 로드 실패: " + e.getMessage());
+        }
     }
 }
