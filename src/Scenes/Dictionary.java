@@ -31,20 +31,27 @@ public class Dictionary extends Scene {
     public void printDictionary(){
         // MyPokemonList에 내가 보유한 포켓몬 객체 배열을 받음
         List<PokemonInfo> MyPokemonList = character.getInstance().MyPokemonList;
+        List<PokemonInfo> allPokemonList = GameMng.getInstance().AllPokemons;
         // 도감에서 표를 출력하기 위한 tab 길이 지정 (\t는 너무 길었음)
         String tab = "   ";
 
         // 포켓몬 도감 표 헤더 출력 코드
         System.out.println("-----------------------------------------------------------------------------");
-        for(int i = 0; i < MyPokemonList.size(); i++){
-            // name이 null 이면 즉, 보유한 포켓몬이 없으면 ??? 출력
-            if(MyPokemonList.size() > i){
-                for (int j = 0; j < 11; j++) System.out.format("%5s", tab + "???");
-            }else {
-                // 포켓몬 정보 출력
-                System.out.println(MyPokemonList.get(i).GetSmallInfo_Hp());
-            }
-            System.out.println();
+//        for(int i = 0; i < allPokemonList.size(); i++){
+//            // name이 null 이면 즉, 보유한 포켓몬이 없으면 ??? 출력
+//            if(MyPokemonList.size() > i){
+//                for (int j = 0; j < 11; j++) System.out.format("%5s", tab + "???");
+//            }else {
+//                // 포켓몬 정보 출력
+//                System.out.println(MyPokemonList.get(i).GetSmallInfo_Hp());
+//            }
+//            System.out.println();
+//        }
+        for (int i=0; i<MyPokemonList.size(); i++) {
+            System.out.println(MyPokemonList.get(i).GetSmallInfo_Hp());
+        }
+        for (int i = 0; i < allPokemonList.size()-MyPokemonList.size(); i++) {
+            System.out.println("???\t\t???\t\t???\t\t\t???\t\t???");
         }
         System.out.println("-----------------------------------------------------------------------------");
     }
