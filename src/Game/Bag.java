@@ -16,12 +16,16 @@ public class Bag {
         itemList = new ArrayList<>();
         itemList.add(new HealingItem("일반 회복약", "포켓몬의 체력을 20 회복시킵니다.", Shop.POTION_PRICE, 20, ITEM_TYPE.NORMAL_HEAL));
         itemList.add(new HealingItem("고급 회복약", "포켓몬의 체력을 50 회복시킵니다.", Shop.ADVANCED_POTION_PRICE, 50, ITEM_TYPE.EPIC_HEAL));
-        itemList.add(new PokeBall("몬스터볼", "특별한 캐치율을 제공하는 특수한 볼입니다.", Shop.MONSTERBALL_PRICE, 0.5, ITEM_TYPE.NORMAL_BALL));
-        itemList.add(new PokeBall("슈퍼볼", "표준 포켓볼보다 높은 캐치율을 제공하는 좋은 고성능 볼입니다.", Shop.SUPERBALL_PRICE, 0.2, ITEM_TYPE.SUPER_BALL));
-        itemList.add(new PokeBall("하이퍼볼", "슈퍼볼보다 높은 캐치율을 제공하는 고성능 볼입니다.", Shop.HYPERBALL_PRICE, 0.3, ITEM_TYPE.HYPER_BALL));
+        itemList.add(new PokeBall("몬스터볼", "특별한 캐치율을 제공하는 특수한 볼입니다.", Shop.MONSTERBALL_PRICE, 0.3, ITEM_TYPE.NORMAL_BALL));
+        itemList.add(new PokeBall("슈퍼볼", "표준 포켓볼보다 높은 캐치율을 제공하는 좋은 고성능 볼입니다.", Shop.SUPERBALL_PRICE, 0.5, ITEM_TYPE.SUPER_BALL));
+        itemList.add(new PokeBall("하이퍼볼", "슈퍼볼보다 높은 캐치율을 제공하는 고성능 볼입니다.", Shop.HYPERBALL_PRICE, 0.7, ITEM_TYPE.HYPER_BALL));
         itemList.add(new PokeBall("마스터볼", "최고 수준의 성능을 가진 최상의 포켓볼입니다.", Shop.MASTERBALL_PRICE, 1.0, ITEM_TYPE.MASTER_BALL));
         itemList.add(new Candy("캔디", "포켓몬의 경험치를 10 증가합니다.", Shop.MASTERBALL_PRICE, 10, ITEM_TYPE.CANDY));
-
+        addItem(ITEM_TYPE.NORMAL_BALL);
+        addItem(ITEM_TYPE.NORMAL_BALL);
+        addItem(ITEM_TYPE.NORMAL_BALL);
+        addItem(ITEM_TYPE.HYPER_BALL);
+        addItem(ITEM_TYPE.HYPER_BALL);
         coin = 1000;
         //loadData();
     }

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GrowthRoom {
+    public static final int MAX_EXP = 1000;
     private class GrowthPokemon{
         PokemonInfo pokemon;
         Timestamp timestamp;
@@ -37,15 +38,16 @@ public class GrowthRoom {
 
     public void printGrowthPokemon(){
         SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        for(int i = 1; i <= growthPokemonList.size(); i++){
-            System.out.println(i + ". " + growthPokemonList.get(i - 1).pokemon.name + " / " + timeToExp(growthPokemonList.get(i - 1).timestamp));
+        int i;
+        for(i = 0; i < growthPokemonList.size(); i++){
+            System.out.println((int)(i + 1) + ". " + growthPokemonList.get(i).pokemon.name + " / " + timeToExp(growthPokemonList.get(i).timestamp));
         }
     }
 
     private int timeToExp(Timestamp inTime){
         Timestamp nowTime = new Timestamp(System.currentTimeMillis());
         long seconds = (nowTime.getTime() - inTime.getTime()) / 1000;
-        int exp = (int)Math.min(seconds/10, 1000);
+        int exp = (int)Math.min(seconds/10, MAX_EXP);
         return exp;
     }
 
@@ -60,5 +62,9 @@ public class GrowthRoom {
             System.out.println("비어있는 포켓몬입니다.");
             return -1;
         }
+    }
+
+    public int getPokemonCount(){
+        return growthPokemonList.size();
     }
 }
