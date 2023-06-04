@@ -34,6 +34,7 @@ public class BagScene extends Scene {
 
             }
         }
+        Bag.getInstance().saveData();
     }
 
     @Override
