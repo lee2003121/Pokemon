@@ -1,5 +1,7 @@
 package Game;
 
+import Mng.GameMng;
+
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -31,7 +33,10 @@ public class GrowthRoom {
     }
 
     public int addGrowthPokemon(PokemonInfo p){
-        if(growthPokemonList.size() == maxSize) return -1;
+        if(growthPokemonList.size() == maxSize) {
+            System.out.println("성장의 방이 이미 꽉 찼습니다.");
+            return -1;
+        }
         growthPokemonList.add(new GrowthPokemon(p, new Timestamp(System.currentTimeMillis())));
         return 0;
     }
@@ -53,13 +58,21 @@ public class GrowthRoom {
 
     public int takeGrowthPokemon(int n){ //인덱스 n에 있는 포켓몬 꺼내기
         try{
-            int exp = timeToExp(growthPokemonList.get(n).timestamp);
-            growthPokemonList.get(n).pokemon.AddExp(exp);
-            System.out.println(growthPokemonList.get(n).pokemon.name + "이(가) " + exp + "경험치를 획득하였습니다.");
-            growthPokemonList.remove(n);
-            return 0;
-        }catch(Exception e){
-            System.out.println("비어있는 포켓몬입니다.");
+            GrowthPokemon p = growthPokemonList.get(n - 1);
+            System.out.println(p.pokemon.name + "을(를) 꺼내시겠습니까?(Y/N)");
+            String ans = GameMng.getInstance().scanner.next();
+            if(ans.equals("N") || ans.equals("n")) return 1;
+            if(ans.equals("Y") || ans.equals("y")){
+                int exp = timeToExp(p.timestamp);
+                p.pokemon.AddExp(exp);
+                System.out.println(p.pokemon.name + "이(가) " + exp + "경험치를 획득하였습니다.");
+                growthPokemonList.remove(n - 1);
+                return 0;
+            }
+            return -1;
+        }catch(Exception e) {
+            System.out.println("잘못된 입력입니다.");
+            e.printStackTrace();
             return -1;
         }
     }
