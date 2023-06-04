@@ -13,7 +13,8 @@ public class Bag {
 
     private Bag() {
         itemList = new ArrayList<>();
-        coin = 0;
+        coin = 10000;
+        loadData();
     }
 
     private static class LazyHolder {
