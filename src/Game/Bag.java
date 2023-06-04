@@ -1,5 +1,6 @@
 package Game;
 
+import Define.ITEM_TYPE;
 import Item.*;
 
 import java.io.*;
@@ -13,14 +14,14 @@ public class Bag {
 
     private Bag() {
         itemList = new ArrayList<>();
-        itemList.add(new HealingItem("일반 회복양", "포켓몬의 체력을 20 회복시킵니다.", 200, 20));
-        itemList.add(new HealingItem("일반 회복양", "포켓몬의 체력을 20 회복시킵니다.", 200, 20));
-        itemList.add(new PokeBall("몬스터볼", "특별한 캐치율을 제공하는 특수한 볼입니다.", 300, 0.5));
-        itemList.add(new PokeBall("몬스터볼", "특별한 캐치율을 제공하는 특수한 볼입니다.", 300, 0.5));
-        itemList.add(new PokeBall("몬스터볼", "특별한 캐치율을 제공하는 특수한 볼입니다.", 300, 0.5));
-        itemList.add(new PokeBall("몬스터볼", "특별한 캐치율을 제공하는 특수한 볼입니다.", 300, 0.5));
-        itemList.add(new PokeBall("몬스터볼", "특별한 캐치율을 제공하는 특수한 볼입니다.", 300, 0.5));
-        coin = 10000;
+        itemList.add(new HealingItem("일반 회복양", "포켓몬의 체력을 20 회복시킵니다.", 200, 20, ITEM_TYPE.HEAL));
+        itemList.add(new HealingItem("일반 회복양", "포켓몬의 체력을 20 회복시킵니다.", 200, 20, ITEM_TYPE.HEAL));
+        itemList.add(new PokeBall("몬스터볼", "특별한 캐치율을 제공하는 특수한 볼입니다.", 300, 0.5, ITEM_TYPE.POKEBALL));
+        itemList.add(new PokeBall("몬스터볼", "특별한 캐치율을 제공하는 특수한 볼입니다.", 300, 0.5, ITEM_TYPE.POKEBALL));
+        itemList.add(new PokeBall("몬스터볼", "특별한 캐치율을 제공하는 특수한 볼입니다.", 300, 0.5, ITEM_TYPE.POKEBALL));
+        itemList.add(new PokeBall("몬스터볼", "특별한 캐치율을 제공하는 특수한 볼입니다.", 300, 0.5, ITEM_TYPE.POKEBALL));
+        itemList.add(new PokeBall("몬스터볼", "특별한 캐치율을 제공하는 특수한 볼입니다.", 300, 0.5, ITEM_TYPE.POKEBALL));
+        coin = 1000;
         loadData();
     }
 
@@ -99,5 +100,23 @@ public class Bag {
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("데이터 로드 실패: " + e.getMessage());
         }
+    }
+
+    public boolean HavePokeball()
+    {
+        for (int i=0;i<itemList.size();i++){
+            if(itemList.get(i).getType() == ITEM_TYPE.POKEBALL)
+                return true;
+        }
+        return false;
+    }
+
+    public boolean HaveHeal()
+    {
+        for (int i=0;i<itemList.size();i++){
+            if(itemList.get(i).getType() == ITEM_TYPE.HEAL)
+                return true;
+        }
+        return false;
     }
 }

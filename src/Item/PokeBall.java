@@ -1,10 +1,12 @@
 package Item;
 
+import Define.ITEM_TYPE;
+
 public class PokeBall extends Item {
     private double catchRate;
 
-    public PokeBall(String name, String description, int price, double catchRate) {
-        super(name, description, price);
+    public PokeBall(String name, String description, int price, double catchRate, ITEM_TYPE type) {
+        super(name, description, price, type);
         this.catchRate = catchRate;
     }
 
