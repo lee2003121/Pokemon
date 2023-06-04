@@ -38,6 +38,7 @@ public class Item implements Serializable {
 
     public void UseItem()
     {
+        System.out.println(name + "을(를) 사용하였습니다.");
         if(count > 0)
             count--;
     }

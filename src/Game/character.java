@@ -14,6 +14,12 @@ public class character {
     private Bag bag;
     private int pX;
     private int pY;
+
+    private character()
+    {
+        init();
+    }
+
     private static class lazyHolder{ // Singleton class
         public static character instance = new character();
     }
@@ -27,6 +33,7 @@ public class character {
         bag = Bag.getInstance();
 
         MyPokemonList = MyPokemon.getInfo();
+        FightPokemonList = MyPokemon.getInfo(); //TODO 나중에 이거 지워야함.
     }
 
     public void AddFightPokemon(PokemonInfo pokemon)
