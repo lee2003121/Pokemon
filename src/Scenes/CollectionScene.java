@@ -1,19 +1,29 @@
 package Scenes;
 
-import Define.ITEM_TYPE;
 import Framework.Scene;
 import Game.Bag;
-import Item.Item;
 import Mng.GameMng;
 
 import java.util.ArrayList;
+import Game.MyPokemon;
+import Game.Pokemon;
+import Game.PokemonInfo;
 
 public class CollectionScene extends Scene {
 
+    private ArrayList<PokemonInfo> allPokemon;
+
+    private ArrayList<PokemonInfo> getAllPokemon(){
+        return Pokemon.getInfo();
+    }
+
+    private PokemonInfo getPokemon(int id){
+        return allPokemon.get(id);
+    }
+
     @Override
     public void Start() {
-
-        if(Bag.getInstance().HavePokeball())
+        if(true)
         {
             System.out.println("포켓몬을 찾기 시작합니다.");
         }else {
@@ -32,24 +42,18 @@ public class CollectionScene extends Scene {
 
         int rand = GameMng.getInstance().GetRandom().nextInt(101);
 
-        if(rand > 80)
+        allPokemon = getAllPokemon();
+
+        if(rand <= 28)
         {
-            System.out.println("포켓몬을 발견하였습니다.");
-
-            System.out.println("사용할 몬스터 볼을 선택하세요.");
-
-            ArrayList<Item> itemList = new ArrayList<Item>();
-
-            itemList.add(Bag.getInstance().GetItem(ITEM_TYPE.NORMAL_BALL));
-            itemList.add(Bag.getInstance().GetItem(ITEM_TYPE.HYPER_BALL));
-            itemList.add(Bag.getInstance().GetItem(ITEM_TYPE.EPIC_HEAL));
-            itemList.add(Bag.getInstance().GetItem(ITEM_TYPE.MASTER_BALL));
-
-            for(int i = 0; i<itemList.size();i++)
-            {
-                System.out.println("");
-            }
-
+//            System.out.println("포켓몬을 발견하였습니다.");
+            PokemonInfo wildPokemon = getPokemon(rand);
+            System.out.println("야생 " + wildPokemon.name + "이(가) 나타났다!");
+            // 내가 몬스터볼이 없으면 중단
+            // 더 이상 수집할 수 없으면 중단
+            // 수집할 수 없으면 버릴 것인가
+            // 도감 가져오기
+            //
         }else {
             System.out.println("포켓몬을 발견하지 못했습니다. 다시 찾습니다..");
         }
