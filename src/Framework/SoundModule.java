@@ -19,4 +19,15 @@ public class SoundModule {
             e.printStackTrace();
         }
     }
+    static void playBackgroundSound(String fileName){
+        try {
+            File file = new File(fileName);
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(file));
+            clip.loop(Clip.LOOP_CONTINUOUSLY); // 무한루프
+            clip.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
