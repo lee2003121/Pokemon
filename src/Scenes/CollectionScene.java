@@ -27,7 +27,7 @@ public class CollectionScene extends Scene {
 
     @Override
     public void Start() {
-        System.out.println("포켓몬을 찾기 시작합니다.");
+
     }
 
     public boolean hasBall(){
@@ -126,7 +126,7 @@ public class CollectionScene extends Scene {
         }
     }
 
-    public void runMenu(PokemonInfo wildPokemon){
+    public void runMenu(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("1 : 수집하기");
         System.out.println("2 : 내가 보유한 포켓몬");
@@ -136,7 +136,18 @@ public class CollectionScene extends Scene {
 
         switch (menu) {
             case 1 :
-                collectPokemon(wildPokemon);
+                int rand = GameMng.getInstance().GetRandom().nextInt(40);
+                if(rand <= 28)
+                {
+                    System.out.println("포켓몬을 찾기 시작합니다.");
+                    PokemonInfo wildPokemon = getPokemon(rand);
+                    System.out.println("야생 " + wildPokemon.name + "이(가) 나타났다!");
+                    collectPokemon(wildPokemon);
+
+                }else {
+                    System.out.println("포켓몬을 발견하지 못했습니다. 다시 찾습니다...");
+                }
+
                 break;
             case 2 :
                 Dictionary.showDictionary();
@@ -158,16 +169,8 @@ public class CollectionScene extends Scene {
             e.printStackTrace();
         }
 
-        int rand = GameMng.getInstance().GetRandom().nextInt(50);
+        runMenu();
 
-        if(rand <= 28)
-        {
-            PokemonInfo wildPokemon = getPokemon(rand);
-            System.out.println("야생 " + wildPokemon.name + "이(가) 나타났다!");
-            runMenu(wildPokemon);
 
-        }else {
-            System.out.println("포켓몬을 발견하지 못했습니다. 다시 찾습니다..");
-        }
     }
 }
