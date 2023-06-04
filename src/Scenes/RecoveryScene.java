@@ -1,6 +1,7 @@
 package Scenes;
 
 import Game.PokemonInfo;
+import Game.character;
 import Mng.GameMng;
 import Framework.Scene;
 
@@ -12,7 +13,7 @@ public class RecoveryScene extends Scene {
     private AtomicBoolean recoveryCompleted;
 
     public void Start() {
-        allPokemon = GameMng.getInstance().AllPokemons;
+        allPokemon = character.getInstance().MyPokemonList;
         dotCount = 0;
         recoveryCompleted = new AtomicBoolean(false);
         recoverAllPokemon();

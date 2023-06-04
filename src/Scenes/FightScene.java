@@ -131,6 +131,10 @@ public class FightScene extends Scene {
         if(fightPokemon.size() == 0)
         {
             System.out.println("플레이어가 승리하였습니다!");
+            for(int i=0;i<character.getInstance().FightPokemonList.size();i++)
+            {
+                character.getInstance().FightPokemonList.get(i).AddExp(GameMng.getInstance().GetRandom().nextInt(10,20));
+            }
             GameOver();
         }
         else {

@@ -46,7 +46,7 @@ public class Dictionary extends Scene {
             }
             System.out.println();
         }
-        System.out.println("-----------------------------------------------------------------------------");
+        System.out.println("------------------------------------------경-----------------------------------");
     }
     public static void showDictionary(){
         // MyPokemonList에 내가 보유한 포켓몬 객체 배열을 받음

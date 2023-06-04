@@ -111,16 +111,17 @@ public class PokemonInfo{
     {
         this.exp += exp;
 
-        if(exp >= 15)
+        while (exp >= 15)
         {
-            exp = 0;
+            exp -= 15;
             level++;
-            checkRevolution();
         }
+
+        checkRevolution();
     }
 
     public boolean valLevel(PokemonInfo pokemon){
-        return pokemon.level>=10;
+        return pokemon.level>=3;
     }
     public boolean isPosRev(PokemonInfo prevPok, PokemonInfo nextPok){
         return prevPok.hp < nextPok.hp;
