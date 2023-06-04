@@ -84,7 +84,7 @@ public class CollectionScene extends Scene {
         int id = scanner.nextInt();
         switch (id){
             case 1 :
-                Bag.getInstance().useItem(ITEM_TYPE.NORMAL_HEAL);
+                Bag.getInstance().useItem(ITEM_TYPE.NORMAL_BALL);
                 return ((PokeBall)monster).getCatchRate();
             case 2 :
                 Bag.getInstance().useItem(ITEM_TYPE.SUPER_BALL);

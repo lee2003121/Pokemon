@@ -12,18 +12,18 @@ public class Dictionary {
 
         // 포켓몬 도감 표 헤더 출력 코드
         System.out.println("-----------------------------------------------------------------------------");
-        System.out.printf("%5s %5s %5s %5s %5s %5s %5s %5s %5s %5s",
-                "POKEMON", "TYPE", "SKILL1", "SKILL2", "HP", "ATTACK", "DEFENSE", "LEVEL", "EXP", "STATUS");
+        System.out.printf("%5s %5s %5s %5s %5s %5s %5s %5s %5s %5s %5s",
+                "ID", "POKEMON", "TYPE", "SKILL1", "SKILL2", "HP", "ATTACK", "DEFENSE", "LEVEL", "EXP", "STATUS");
         System.out.println();
         System.out.println("-----------------------------------------------------------------------------");
         for(int i = 0; i < MyPokemonList.size(); i++){
             // name이 null 이면 즉, 보유한 포켓몬이 없으면 ??? 출력
             if(MyPokemonList.get(i).name == null){
-                for (int j = 0; j < 10; j++) System.out.format("%5s", tab + "???");
+                for (int j = 0; j < 11; j++) System.out.format("%5s", tab + "???");
             }else {
                 // 포켓몬 정보 출력
-                System.out.format("%5s %5s %5s %5s %5s %5s %5s %5s %5s %5s",
-                        MyPokemonList.get(i).name, MyPokemonList.get(i).type, MyPokemonList.get(i).skill1, MyPokemonList.get(i).skill2, MyPokemonList.get(i).hp,
+                System.out.format("%5s %5s %5s %5s %5s %5s %5s %5s %5s %5s %5s",
+                        MyPokemonList.get(i).id, MyPokemonList.get(i).name, MyPokemonList.get(i).type, MyPokemonList.get(i).skill1, MyPokemonList.get(i).skill2, MyPokemonList.get(i).hp,
                         MyPokemonList.get(i).atk, MyPokemonList.get(i).def, MyPokemonList.get(i).level, MyPokemonList.get(i).exp, MyPokemonList.get(i).status);
             }
             System.out.println();
@@ -38,18 +38,18 @@ public class Dictionary {
 
         // 포켓몬 도감 표 헤더 출력 코드
         System.out.println("-----------------------------------------------------------------------------");
-        System.out.printf("%5s %5s %5s %5s %5s %5s %5s %5s %5s %5s",
-                "POKEMON", "TYPE", "SKILL1", "SKILL2", "HP", "ATTACK", "DEFENSE", "LEVEL", "EXP", "STATUS");
+        System.out.printf("%5s %5s %5s %5s %5s %5s %5s %5s %5s %5s %5s",
+                "ID", "POKEMON", "TYPE", "SKILL1", "SKILL2", "HP", "ATTACK", "DEFENSE", "LEVEL", "EXP", "STATUS");
         System.out.println();
         System.out.println("-----------------------------------------------------------------------------");
         for(int i = 0; i < MyPokemonList.size(); i++){
             // name이 null 이면 즉, 보유한 포켓몬이 없으면 ??? 출력
             if(MyPokemonList.get(i).name == null){
-                break;
+                continue;
             }else {
                 // 포켓몬 정보 출력
-                System.out.format("%5s %5s %5s %5s %5s %5s %5s %5s %5s %5s",
-                        MyPokemonList.get(i).name, MyPokemonList.get(i).type, MyPokemonList.get(i).skill1, MyPokemonList.get(i).skill2, MyPokemonList.get(i).hp,
+                System.out.format("%5s %5s %5s %5s %5s %5s %5s %5s %5s %5s %5s",
+                        MyPokemonList.get(i).id, MyPokemonList.get(i).name, MyPokemonList.get(i).type, MyPokemonList.get(i).skill1, MyPokemonList.get(i).skill2, MyPokemonList.get(i).hp,
                         MyPokemonList.get(i).atk, MyPokemonList.get(i).def, MyPokemonList.get(i).level, MyPokemonList.get(i).exp, MyPokemonList.get(i).status);
             }
             System.out.println();
