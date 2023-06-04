@@ -6,13 +6,11 @@ import Game.Bag;
 import Mng.GameMng;
 import Game.character;
 import Item.*;
-import java.util.ArrayList;
-import Game.MyPokemon;
-import Game.Pokemon;
 import Game.PokemonInfo;
 import Game.Dictionary;
+
+import java.util.List;
 import java.util.Scanner;
-import Game.Bag;
 import Item.Item;
 
 public class CollectionScene extends Scene {
@@ -56,9 +54,6 @@ public class CollectionScene extends Scene {
         }
     }
 
-    public void getDictionary(){
-
-    }
 
     public void selectFightPokemon(){
 
