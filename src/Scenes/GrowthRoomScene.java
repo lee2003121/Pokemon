@@ -24,12 +24,12 @@ public class GrowthRoomScene extends Scene{
             ArrayList<PokemonInfo> list = MyPokemon.getInfo();
             Dictionary.showDictionary();
             int inputData2 = GameMng.getInstance().scanner.nextInt();
-            if(list.get(inputData2 + 1).name == null){
+            if(list.get(inputData2 - 1).name == null){
                 System.out.println("잘못된 입력입니다.");
                 this.Draw();
                 return;
             }
-            GrowthRoom.getInstance().addGrowthPokemon(list.get(inputData2 + 1));
+            GrowthRoom.getInstance().addGrowthPokemon(list.get(inputData2 - 1));
         }
         else{
             System.out.println("잘못된 입력입니다.");
