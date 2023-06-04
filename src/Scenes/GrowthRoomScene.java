@@ -20,6 +20,7 @@ public class GrowthRoomScene extends Scene{
         else if(inputData == GrowthRoom.getInstance().getPokemonCount() + 1){
             List<PokemonInfo> list = character.getInstance().MyPokemonList;
             Dictionary.showDictionary();
+            System.out.print("포켓몬을 선택하세요 : ");
             int inputData2 = GameMng.getInstance().scanner.nextInt();
             for(var p: list)
             {

@@ -126,7 +126,7 @@ public class PokemonInfo{
     public boolean isPosRev(PokemonInfo prevPok, PokemonInfo nextPok){
         return prevPok.hp < nextPok.hp;
     }
-    void checkRevolution(){
+    public void checkRevolution(){
         if(valLevel(this)){
             ArrayList<PokemonInfo> allPokemon = Pokemon.getInfo();
             if(isPosRev(allPokemon.get(allPokemon.indexOf(this)), allPokemon.get((allPokemon.indexOf(this)) + 1))){

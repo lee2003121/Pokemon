@@ -17,8 +17,4 @@ public class Candy extends Item {
     public void setExperiencePoints(int experiencePoints) {
         this.experiencePoints = experiencePoints;
     }
-
-    public void use(){
-
-    }
 }

@@ -23,7 +23,18 @@ public class Bag {
         itemList.add(new Candy("캔디", "포켓몬의 경험치를 10 증가합니다.", Shop.MASTERBALL_PRICE, 10, ITEM_TYPE.CANDY));
 
         coin = 1000;
-        //loadData();
+
+        addItem(ITEM_TYPE.NORMAL_HEAL);
+        addItem(ITEM_TYPE.NORMAL_HEAL);
+
+        addItem(ITEM_TYPE.NORMAL_BALL);
+        addItem(ITEM_TYPE.NORMAL_BALL);
+        addItem(ITEM_TYPE.NORMAL_BALL);
+        addItem(ITEM_TYPE.NORMAL_BALL);
+        addItem(ITEM_TYPE.NORMAL_BALL);
+        addItem(ITEM_TYPE.MASTER_BALL);
+
+        loadData();
     }
 
     private static Bag instance;

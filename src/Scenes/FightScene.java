@@ -135,6 +135,9 @@ public class FightScene extends Scene {
             {
                 character.getInstance().FightPokemonList.get(i).AddExp(GameMng.getInstance().GetRandom().nextInt(10,20));
             }
+
+            Bag.getInstance().addItem(ITEM_TYPE.CANDY);
+
             GameOver();
         }
         else {
@@ -213,11 +216,12 @@ public class FightScene extends Scene {
         myItemList.get(select - 1).UseItem();
 
         int amount = ((HealingItem)myItemList.get(select - 1)).getHealingPower();
-
-        if(playerSelectPokemon.hp + amount > playerSelectPokemon.maxHp)
-            amount -= playerSelectPokemon.hp + amount - playerSelectPokemon.maxHp;
-
         playerSelectPokemon.hp += amount;
+
+        if(playerSelectPokemon.hp > playerSelectPokemon.maxHp)
+            playerSelectPokemon.hp = playerSelectPokemon.maxHp;
+
+
         System.out.println("HP " + amount+"만큼 회복하였습니다!");
     }
 }

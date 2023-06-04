@@ -1,9 +1,16 @@
 package Scenes;
 
 import Framework.Scene;
+import Game.Bag;
+import Game.character;
 import Mng.GameMng;
 
 public class MenuScene extends Scene {
+
+    @Override
+    public void Start() {
+        character.getInstance().loadData();
+    }
 
     @Override
     public  void Update()
@@ -33,6 +40,8 @@ public class MenuScene extends Scene {
                 GameMng.getInstance().ChangeState(new Dictionary());
                 break;
             case 8:
+                Bag.getInstance().saveData();
+                character.getInstance().saveData();
                 System.exit(0);
                 break;
         }

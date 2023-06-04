@@ -53,4 +53,5 @@ public class ShopScene extends Scene {
         }
         Bag.getInstance().saveData();
     }
+
 }
