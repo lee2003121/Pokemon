@@ -6,7 +6,9 @@ import Game.PokemonInfo;
 import Game.MyPokemon;
 import Mng.GameMng;
 import Game.Dictionary;
+import Game.character;
 import java.util.ArrayList;
+import java.util.List;
 
 public class GrowthRoomScene extends Scene{
     @Override
@@ -18,14 +20,17 @@ public class GrowthRoomScene extends Scene{
             return;
         }
         else if(inputData == GrowthRoom.getInstance().getPokemonCount() + 1){
-            ArrayList<PokemonInfo> list = MyPokemon.getInfo();
+            List<PokemonInfo> list = character.getInstance().MyPokemonList;
             Dictionary.showDictionary();
             int inputData2 = GameMng.getInstance().scanner.nextInt();
-            if(list.get(inputData2 - 1).name == null){
-                System.out.println("잘못된 입력입니다.");
-                return;
+            for(var p: list)
+            {
+                if(p.id == inputData2) {
+                    GrowthRoom.getInstance().addGrowthPokemon(p);
+                    return;
+                }
             }
-            GrowthRoom.getInstance().addGrowthPokemon(list.get(inputData2 - 1));
+            System.out.println("잘못된 입력입니다.");
         }
         else{
             GrowthRoom.getInstance().takeGrowthPokemon(inputData);
