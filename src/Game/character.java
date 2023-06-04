@@ -10,8 +10,7 @@ import java.util.List;
 public class character implements Serializable {
     private final String FILE_NAME = "character_data.km";
     public List<PokemonInfo> MyPokemonList;
-    private List<PokemonInfo> FightPokemonList;
-    private Map now_map;
+    public List<PokemonInfo> FightPokemonList;
     private int level;
     private int exp;
     private Bag bag;
@@ -33,7 +32,6 @@ public class character implements Serializable {
         bag = Bag.getInstance();
 
         MyPokemonList = MyPokemon.getInfo();
-        FightPokemonList = MyPokemon.getInfo(); //TODO 나중에 이거 지워야함.
     }
 
     public void AddFightPokemon(PokemonInfo pokemon)
