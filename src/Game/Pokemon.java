@@ -38,6 +38,7 @@ public class Pokemon {
                     Pokemon.level = Integer.parseInt(fields[8]);
                     Pokemon.exp = Integer.parseInt(fields[9]);
                     Pokemon.status = Integer.parseInt(fields[10]);
+                    Pokemon.next = fields[11].trim();
                     list.add(Pokemon);
                 }
             } catch (IOException e) {

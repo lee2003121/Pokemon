@@ -4,6 +4,8 @@ import Mng.GameMng;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.zip.Deflater;
 
 public class PokemonInfo implements Serializable {
 
@@ -31,7 +33,9 @@ public class PokemonInfo implements Serializable {
     public int exp;
     // 포켓몬 경험치
     public int status;
+
     // 포켓몬 상태 1이면 전투 가능, 0이면 기절 상태
+    public String next;
 
     // 포켓몬 객체 출력을 위한 toString() 메서드 선언
     @Override
@@ -112,9 +116,9 @@ public class PokemonInfo implements Serializable {
     {
         this.exp += exp;
 
-        while (exp >= 15)
+        while (this.exp >= 15)
         {
-            exp -= 15;
+            this.exp -= 15;
             level++;
         }
 
@@ -128,13 +132,33 @@ public class PokemonInfo implements Serializable {
         return prevPok.hp < nextPok.hp;
     }
     public void checkRevolution(){
-        if(valLevel(this)){
-            ArrayList<PokemonInfo> allPokemon = Pokemon.getInfo();
-            if(isPosRev(allPokemon.get(allPokemon.indexOf(this)), allPokemon.get((allPokemon.indexOf(this)) + 1))){
-                PokemonInfo newPokemon = allPokemon.get((allPokemon.indexOf(this)) + 1);
-                character.getInstance().MyPokemonList.remove(this);
-                character.getInstance().MyPokemonList.add(newPokemon);
-                System.out.println(this.name + "이(가) " + newPokemon + "으로 진화 되었다!");
+        if(level >= 3){
+            //ArrayList<PokemonInfo> allPokemon = Pokemon.getInfo();
+//            if(isPosRev(allPokemon.get(allPokemon.indexOf(this)), allPokemon.get((allPokemon.indexOf(this)) + 1))){
+//                PokemonInfo newPokemon = allPokemon.get((allPokemon.indexOf(this)) + 1);
+//                character.getInstance().MyPokemonList.remove(this);
+//                character.getInstance().MyPokemonList.add(newPokemon);
+//                System.out.println(this.name + "이(가) " + newPokemon + "으로 진화 되었다!");
+//            }
+            System.out.println(next);
+            if(this.next != "null"){
+                for(int i=0;i<GameMng.getInstance().AllPokemons.size(); i++)
+                {
+                    if(this.next.equals(GameMng.getInstance().AllPokemons.get(i).name))
+                    {
+                        character.getInstance().MyPokemonList.add(GameMng.getInstance().AllPokemons.get(i));
+                        for(int j=0;j<character.getInstance().MyPokemonList.size();j++)
+                        {
+                            if(character.getInstance().MyPokemonList.get(j).name == name)
+                            {
+                                System.out.println(name + "이(가) " + GameMng.getInstance().AllPokemons.get(i).name+"으로 진화했습니다.");
+                                character.getInstance().MyPokemonList.remove(j);
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
             }
         }
     }
